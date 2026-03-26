@@ -588,38 +588,55 @@ ul {
   margin: 0;
 }
 
-/* ── Rows 2 & 3 shared ── */
-.about-row2,
-.about-row3 {
-  padding: 0 0 4.5rem;
+/* ── Goal & Values unified grid ── */
+/* ── Goal & Values unified grid ── */
+.about-gv {
+  padding: 0 2rem 5rem;
 }
- 
-/* Both rows: items align to the TOP */
-.about-row2 .container-about,
-.about-row3 .container-about {
-  align-items: flex-start;
+
+.container-about-gv {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;           /* ← was missing */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3.5rem;
 }
- 
+
+/* Each column stacks its children vertically */
+.about-gv-left,
+.about-gv-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-width: 0;              /* ← prevents grid blowout */
+}
+
+/* Image wrap */
 .about-img-wrap {
-  flex: 0 0 44%;
-  max-width: 44%;
+  width: 100%;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 6px 28px rgba(0, 28, 56, 0.1);
+  flex-shrink: 0;
 }
- 
+
 .about-img-wrap img {
   width: 100%;
-  height: auto;       
+  height: auto;
   display: block;
 }
- 
-/* Goal & Values text */
+
+/* Goal & Values text — ONE clean definition, no duplicates */
 .about-goal-text,
 .about-values-text {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
- 
+
 .about-goal-text h3,
 .about-values-text h3 {
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -628,7 +645,7 @@ ul {
   margin-bottom: 1rem;
   line-height: 1.2;
 }
- 
+
 .about-goal-text p,
 .about-values-text p {
   font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
@@ -637,8 +654,8 @@ ul {
 }
 
 /* ============================================================
-       RESPONSIVE
-    ============================================================ */
+   RESPONSIVE — all breakpoints together, no splitting
+   ============================================================ */
 @media (max-width: 1024px) {
   .carousel {
     aspect-ratio: 16 / 7;
@@ -646,21 +663,66 @@ ul {
 }
 
 @media (max-width: 768px) {
+  /* Nav */
   .nav-desktop {
     display: none;
   }
-
   .hamburger {
     display: flex;
   }
 
+  /* Carousel */
   .carousel {
     aspect-ratio: 4 / 3;
     border-radius: 14px;
   }
-
   .slide-caption {
     max-width: 72%;
+  }
+
+  /* About row 1 — stack */
+  .container-about {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-left {
+    flex: unset;
+    max-width: 100%;
+  }
+  .about-left p {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .about-cards {
+    width: 100%;
+  }
+
+  /* Goal & Values — collapse to single column */
+  .container-about-gv {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1.25rem;
+  }
+  .about-gv {
+    padding: 0 0 3.5rem;
+  }
+  .about-gv-left,
+  .about-gv-right {
+    gap: 2rem;
+  }
+
+  /* Mobile reading order: Goal image → Goal text → Values text → Values image */
+  .about-gv-left {
+    order: 1;
+  }
+  .about-gv-right {
+    order: 2;
+  }
+  .about-gv-right .about-goal-text {
+    order: 1;
+  }
+  .about-gv-right .about-img-wrap {
+    order: 2;
   }
 }
 
@@ -669,12 +731,16 @@ ul {
     aspect-ratio: 1 / 1;
     border-radius: 10px;
   }
-
   .slide-caption {
     max-width: 88%;
   }
-
   .carousel-wrap {
     padding: 0 0.75rem 2rem;
+  }
+  .about-gv {
+    padding: 0 0 2.5rem;
+  }
+  .container-about-gv {
+    padding: 0 1rem;
   }
 }
