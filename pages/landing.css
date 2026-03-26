@@ -751,7 +751,7 @@ ul {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0.5rem 0 1.75rem;
-  gap: 0.25rem;
+  gap: 2rem;
 }
 
 /* Arrows — vertically centered to deck */
@@ -780,7 +780,7 @@ ul {
   position: relative;
   flex: 1;
   max-width: 780px;
-  height: clamp(300px, 36vw, 420px);
+  height: clamp(380px, 44vw, 500px); 
   overflow: visible;
 }
 
@@ -798,11 +798,9 @@ ul {
   height: 100%;
   opacity: 0;
   pointer-events: none;
-  /* smooth transitions */
   transition: transform 0.5s cubic-bezier(.4,0,.2,1),
               opacity   0.5s cubic-bezier(.4,0,.2,1),
-              box-shadow 0.5s ease,
-              width     0.5s cubic-bezier(.4,0,.2,1);
+              box-shadow 0.5s ease;
   will-change: transform, opacity;
 }
 
@@ -811,40 +809,44 @@ ul {
   opacity: 1;
   pointer-events: auto;
   z-index: 5;
-  width: 42%;
-  transform: translateX(-50%) rotate(0deg);
+  width: 42%;             
+  transform: translateX(-50%) rotate(0deg) scale(1);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45),
               0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* ── PEEK LEFT  ── */
+/* ── PEEK LEFT ── */
 .team-card.tc-peek1 {
   opacity: 1;
   pointer-events: none;
   z-index: 3;
-  width: 30%;
-  transform: translateX(-108%) rotate(-4deg);
+  width: 42%;             
+  transform: translateX(-108%) rotate(-4deg) scale(0.78);
+  transform-origin: center center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   filter: brightness(0.72);
+  overflow: hidden;
 }
 
-/* ── PEEK RIGHT  ── */
+/* ── PEEK RIGHT ── */
 .team-card.tc-peek2 {
   opacity: 1;
   pointer-events: none;
   z-index: 3;
-  width: 30%;
-  transform: translateX(8%) rotate(4deg);
+  width: 42%;              
+  transform: translateX(8%) rotate(4deg) scale(0.78);
+  transform-origin: center center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   filter: brightness(0.72);
+  overflow: hidden;
 }
 
-/* ── Hidden card — behind active, not visible ── */
+/* ── Hidden card ── */
 .team-card.tc-peek3 {
   opacity: 0;
   pointer-events: none;
   z-index: 1;
-  width: 34%;
+  width: 42%;              /* same width */
   transform: translateX(-50%) scale(0.92);
 }
 
@@ -877,8 +879,8 @@ ul {
   justify-content: flex-start;
   overflow: hidden;
   background: #fff;
+  min-height: 0;
 }
-
 /* Faded quote mark */
 .team-card-quote-bg {
   position: absolute;
@@ -894,7 +896,7 @@ ul {
 }
 
 .team-card-name {
-  font-size: clamp(0.72rem, 1.3vw, 0.95rem);
+font-size: clamp(0.9rem, 1.8vw, 1.2rem);
   font-weight: 700;
   color: #001c38;
   margin-bottom: 0.1rem;
@@ -902,15 +904,15 @@ ul {
 }
 
 .team-card-position {
-  font-size: clamp(0.62rem, 1vw, 0.75rem);
+font-size: clamp(0.72rem, 1.3vw, 0.95rem);
   font-weight: 400;
-  color: #555;
+  color: black;
   margin-bottom: 0.4rem;
   line-height: 1.3;
 }
 
 .team-card-quote {
-  font-size: clamp(0.58rem, 0.9vw, 0.7rem);
+  font-size: clamp(0.68rem, 1.2vw, 0.9rem);
   font-weight: 400;
   color: #333;
   line-height: 1.55;
