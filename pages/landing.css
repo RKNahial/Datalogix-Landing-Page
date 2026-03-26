@@ -741,17 +741,20 @@ ul {
   /* Mobile reading order: Goal image → Goal text → Values text → Values image */
   .about-gv-left {
     order: 1;
+    gap: 2rem;
   }
   .about-gv-right {
     order: 2;
+    gap: 2rem;
   }
-  .about-gv-right .about-goal-text {
-    order: 1;
-  }
-  .about-gv-right .about-img-wrap {
-    order: 2;
-  }
-}
+
+  /* Left column: Values text first, then Goal image */
+  .about-gv-left .about-values-text { order: 1; }
+  .about-gv-left .about-img-wrap    { order: 2; }
+
+  /* Right column: Goal text first, then Values image */
+  .about-gv-right .about-goal-text  { order: 1; }
+  .about-gv-right .about-img-wrap   { order: 2; }
 
 @media (max-width: 480px) {
   .carousel {
