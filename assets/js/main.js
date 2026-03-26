@@ -74,3 +74,50 @@ function updateHeader() {
 }
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
+
+/* ---- Team Deck Carousel ---- */
+(function () {
+  const cards    = Array.from(document.querySelectorAll('.team-card'));
+  const teamDots = Array.from(document.querySelectorAll('.team-dot'));
+  const TOTAL    = cards.length;
+  let   active   = 0;
+
+  function renderDeck(idx) {
+    const prev = (idx - 1 + TOTAL) % TOTAL;
+    const next = (idx + 1) % TOTAL;
+    const hidden = (idx + 2) % TOTAL;
+
+    cards.forEach(c => c.classList.remove('tc-active','tc-peek1','tc-peek2','tc-peek3'));
+
+    cards[idx].classList.add('tc-active');
+    cards[prev].classList.add('tc-peek1');   /* peeks LEFT  */
+    cards[next].classList.add('tc-peek2');   /* peeks RIGHT */
+    cards[hidden].classList.add('tc-peek3'); /* hidden      */
+
+    teamDots.forEach((dot, i) => {
+      const on = i === idx;
+      dot.classList.toggle('active', on);
+      dot.setAttribute('aria-selected', String(on));
+    });
+  }
+
+  function goTeam(n) {
+    active = (n + TOTAL) % TOTAL;
+    renderDeck(active);
+  }
+
+  document.getElementById('teamPrev').addEventListener('click', () => goTeam(active - 1));
+  document.getElementById('teamNext').addEventListener('click', () => goTeam(active + 1));
+
+  teamDots.forEach(dot => dot.addEventListener('click', () => goTeam(+dot.dataset.index)));
+
+  let tx = 0;
+  const deck = document.getElementById('teamDeck');
+  deck.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  deck.addEventListener('touchend', e => {
+    const diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTeam(diff > 0 ? active + 1 : active - 1);
+  }, { passive: true });
+
+  renderDeck(0);
+})();
