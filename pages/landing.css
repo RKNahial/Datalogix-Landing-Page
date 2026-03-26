@@ -237,7 +237,7 @@ ul {
 
 .hero-text h1 {
   font-size: clamp(2rem, 4.8vw, 3.25rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.18;
   color: var(--blue);
   margin-bottom: 1rem;
@@ -378,7 +378,7 @@ ul {
 
 .slide-caption h2 {
   font-size: clamp(1rem, 2.6vw, 1.75rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   line-height: 1.25;
   margin-bottom: 0.5rem;
@@ -483,7 +483,7 @@ ul {
 
 .about-header h2 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--blue);
   margin-bottom: 0.75rem;
 }
@@ -575,7 +575,7 @@ ul {
 
 .about-card h4 {
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--blue);
   margin-bottom: 0.4rem;
   line-height: 1.3;
