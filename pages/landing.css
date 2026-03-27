@@ -866,7 +866,7 @@ ul {
   object-fit: cover;
   object-position: center top;
   display: block;
-  border-radius: 14px;  /* rounded corners on photo */
+  border-radius: 14px;  
 }
 
 /* ── Card body ── */
@@ -881,41 +881,55 @@ ul {
   background: #fff;
   min-height: 0;
 }
+
+.team-card-quote-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.25rem;
+}
+
 /* Faded quote mark */
 .team-card-quote-bg {
   position: absolute;
-  bottom: -0.5rem;
-  right: 0.4rem;
-  font-size: 70px;
-  font-weight: 400;
-  color: rgba(0, 28, 56, 0.07);
-  line-height: 1;
+  right: 0.7rem;
+  top: 25%;
+  transform: translateY(-50%);
+  font-size: clamp(2rem, 4.2vw, 3.3rem);
+  color: rgba(120, 128, 138, 0.16);
+  line-height: 0.8;
   pointer-events: none;
   user-select: none;
-  font-family: var(--font);
+  display: block;
+  z-index: 0;
 }
 
 .team-card-name {
-font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
   font-weight: 700;
   color: #001c38;
-  margin-bottom: 0.1rem;
-  line-height: 1.2;
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .team-card-position {
-font-size: clamp(0.72rem, 1.3vw, 0.95rem);
+font-size: clamp(0.75rem, 1.35vw, 1rem);
   font-weight: 400;
   color: black;
-  margin-bottom: 0.4rem;
-  line-height: 1.3;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
 }
 
 .team-card-quote {
   font-size: clamp(0.68rem, 1.2vw, 0.9rem);
   font-weight: 400;
-  color: #333;
-  line-height: 1.55;
+  color: black;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Dots ── */
@@ -1047,11 +1061,66 @@ font-size: clamp(0.72rem, 1.3vw, 0.95rem);
 }
 
 @media (max-width: 480px) {
-  .team-deck {
-    height: clamp(320px, 95vw, 420px);
+  .team-deck-wrap {
+    max-width: 390px;
+    padding: 0.5rem 1.6rem 1.5rem;
+    gap: 0;
   }
 
-  .team-card.tc-active { width: 68%; }
-  .team-card.tc-peek1  { width: 60%; transform: translateX(-90%) rotate(-4deg); }
-  .team-card.tc-peek2  { width: 60%; transform: translateX(-10%) rotate(4deg); }
+  .team-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.35rem;
+    padding: 0.25rem;
+  }
+
+  #teamPrev {
+    left: 0.15rem;
+  }
+
+  #teamNext {
+    right: 0.15rem;
+  }
+
+  .team-deck {
+    width: 100%;
+    height: clamp(455px, 136vw, 560px);
+  }
+
+  .team-card.tc-active { width: 78%; }
+  .team-card.tc-peek1  { width: 64%; transform: translateX(-100%) rotate(-4deg) scale(0.79); }
+  .team-card.tc-peek2  { width: 64%; transform: translateX(0%) rotate(4deg) scale(0.79); }
+
+  .team-card-img {
+    flex: 0 0 47%;
+    padding: 0.6rem 0.6rem 0;
+  }
+
+  .team-card-body {
+    padding: 0.8rem 0.9rem 1rem;
+  }
+
+  .team-card-name {
+    font-size: clamp(0.95rem, 5vw, 1.2rem);
+    line-height: 1.08;
+    margin-bottom: 0.3rem;
+  }
+
+  .team-card-position {
+    font-size: clamp(0.72rem, 3.3vw, 0.9rem);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .team-card-quote {
+    font-size: clamp(0.72rem, 3.4vw, 0.9rem);
+    line-height: 1.42;
+  }
+
+  .team-card-quote-bg {
+    top: 29%;
+    right: 0.55rem;
+    font-size: clamp(2.5rem, 11vw, 3.6rem);
+  }
 }
