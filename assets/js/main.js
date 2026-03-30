@@ -165,3 +165,26 @@ updateHeader();
 
   activate(0);
 })();
+
+/* ---- Products Video Scroll Playback ---- */
+(function () {
+  const video = document.querySelector('.products-video');
+  if (!video) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+      } else {
+        video.pause();
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  observer.observe(video);
+})();
