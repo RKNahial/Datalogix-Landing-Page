@@ -121,3 +121,47 @@ updateHeader();
 
   renderDeck(0);
 })();
+
+/* ---- Products Tabs ---- */
+(function () {
+  const tabs = Array.from(document.querySelectorAll('.products-tab'));
+  const panel = document.getElementById('productsPanel');
+  const titleEl = document.getElementById('productsPanelTitle');
+  const descEl = document.getElementById('productsPanelSubheader');
+
+  if (!tabs.length || !panel || !titleEl || !descEl) return;
+
+  function withRedLastWord(text) {
+    const words = text.trim().split(/\s+/);
+    if (words.length < 2) return text;
+    const last = words.pop();
+    return `${words.join(' ')} <span class="red">${last}</span>`;
+  }
+
+  function activate(index) {
+    tabs.forEach((tab, i) => {
+      const active = i === index;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+    });
+
+    const tab = tabs[index];
+    panel.setAttribute('aria-labelledby', tab.id);
+    titleEl.innerHTML = withRedLastWord(tab.dataset.title || '');
+    descEl.textContent = tab.dataset.description || '';
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(index));
+    tab.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      const dir = event.key === 'ArrowRight' ? 1 : -1;
+      const next = (index + dir + tabs.length) % tabs.length;
+      tabs[next].focus();
+      activate(next);
+    });
+  });
+
+  activate(0);
+})();

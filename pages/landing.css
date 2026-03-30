@@ -971,7 +971,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
    PRODUCTS SECTION
    ============================================================ */
 .products {
-  background: #f5f5f5;
+  background: #fff;
   overflow: hidden;
   padding: 0 0 5rem;
 }
@@ -1019,6 +1019,149 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   color: #f58a8a;
 }
 
+.products-tabs {
+  margin-top: 3.35rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.products-tab {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.22s ease;
+}
+
+.products-tab:focus-visible {
+  outline: 2px solid #A80000;
+  outline-offset: 3px;
+}
+
+.products-tab-media {
+  display: block;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.products-tab-media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Label — bottom-left, stacked, muted by default */
+.products-tab-label {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  right: 2.4rem;        /* leave room so text doesn't go under arrow */
+  z-index: 2;
+  color: #B8B8B8;
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+/* Arrow circle — bottom-right corner, moderate size */
+.products-tab-arrow {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  width: clamp(32px, 3vw, 40px);
+  height: clamp(32px, 3vw, 40px);
+  border-radius: 50%;
+  border: none;
+  background: #C46A6A;
+  color: #B8B8B8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.8rem, 1.1vw, 1.05rem);
+  z-index: 3;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Active tab */
+.products-tab.is-active .products-tab-arrow {
+  background: #A80000;
+  color: #fff;
+}
+
+.products-tab.is-active .products-tab-label {
+  color: #fff;
+}
+
+/* Hover */
+.products-tab:hover .products-tab-arrow {
+  background: #A80000;
+  color: #fff;
+}
+
+.products-tab:hover .products-tab-label {
+  color: #fff;
+}
+
+/* Hover */
+.products-tab:hover .products-tab-arrow {
+  background: #A80000;
+  color: #fff;
+}
+
+.products-tab:hover .products-tab-label {
+  color: #fff;
+}
+
+.products-panel {
+  margin: 3.45rem auto 0;
+  max-width: 860px;
+  text-align: center;
+}
+
+.products-tab:hover {
+  transform: translateY(-4px);
+}
+
+.products-tab:hover .products-tab-arrow {
+  background: #A80000;
+  color: #fff;
+}
+
+.products-tab:hover .products-tab-label {
+  color: #fff;
+}
+
+.products-panel-title {
+  color: var(--blue);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 0.95rem;
+}
+
+.products-panel-title .red {
+  color: var(--red);
+}
+
+.products-panel-divider {
+  margin-bottom: 1.4rem;
+}
+
+.products-panel-subheader {
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.5;
+  color: #2e3239;
+  margin: 0;
+}
+
 
 /* ============================================================
    RESPONSIVE LAYOUT
@@ -1026,6 +1169,9 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 @media (max-width: 1024px) {
   .carousel {
     aspect-ratio: 16 / 7;
+  }
+  .products-tabs {
+    gap: 0.7rem;
   }
 }
 
@@ -1062,6 +1208,87 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
   .about-cards {
     width: 100%;
+  }
+
+  .products-showcase {
+    padding: 0 1.25rem;
+  }
+
+  .products-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+.products-tab-label {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  right: 3rem;
+  z-index: 2;
+  color: #B8B8B8;
+  font-family: var(--font);
+  font-size: clamp(0.78rem, 1vw, 1rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* Arrow circle */
+.products-tab-arrow {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  width: clamp(56px, 5.5vw, 70px);
+  height: clamp(56px, 5.5vw, 70px);
+  border-radius: 50%;
+  border: none;
+  background: #C46A6A;
+  color: #B8B8B8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.25rem, 1.9vw, 1.65rem);
+  z-index: 3;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+  .products-panel {
+    margin-top: 2.85rem;
+  }
+
+
+  /* @media (max-width: 768px) */
+  .products-tab-label {
+    font-size: clamp(0.7rem, 1.7vw, 0.9rem);
+    bottom: 0.65rem;
+    left: 0.65rem;
+    right: 2.8rem;
+  }
+
+  .products-tab-arrow {
+    width: clamp(34px, 4.5vw, 42px);
+    height: clamp(34px, 4.5vw, 42px);
+    font-size: 0.95rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+  }
+
+  /* @media (max-width: 480px) */
+    .products-tab-label {
+    left: 0.6rem;
+    right: 2.6rem;
+    bottom: 0.6rem;
+    font-size: 0.75rem;
+    font-family: var(--font);
+  }
+
+  .products-tab-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
   }
 
   /* Goal & Values — collapse to single column */
@@ -1117,6 +1344,40 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 @media (max-width: 480px) {
+  .products-showcase {
+    padding: 0 1rem;
+  }
+
+  .products-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .products-tab-label {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.45rem;
+    font-size: 0.92rem;
+  }
+
+  .products-tab-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .products-panel-title {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .products-panel-subheader {
+    font-size: 0.92rem;
+  }
+
+  .products-panel {
+    margin-top: 2.4rem;
+  }
+
   .team-deck-wrap {
     max-width: 390px;
     padding: 0.5rem 1.6rem 1.5rem;
