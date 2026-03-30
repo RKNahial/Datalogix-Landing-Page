@@ -197,7 +197,7 @@ ul {
 }
 
 /* ============================================================
-       HERO — white background section
+       HERO 
     ============================================================ */
 .hero {
   padding-top: var(--header-h);
@@ -504,22 +504,26 @@ ul {
 }
 
 /* ── Section title ── */
+.section-header,
 .about-header {
   text-align: center;
   padding: 5rem 1.5rem 3rem;
 }
 
+.section-title,
 .about-header h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.45rem, 3.2vw, 2.15rem);
   font-weight: 700;
   color: var(--blue);
   margin-bottom: 0.75rem;
 }
 
+.section-title .red,
 .about-header h2 .red {
   color: var(--red);
 }
 
+.section-divider,
 .about-divider {
   width: 48px;
   height: 4px;
@@ -692,7 +696,7 @@ ul {
   padding: 3rem 1.5rem 2.5rem;
 }
 
-/* White grid — behind everything */
+/* White grid */
 .team-grid-bg {
   position: absolute;
   inset: 0;
@@ -721,12 +725,12 @@ ul {
   font-size: clamp(1.2rem, 2.8vw, 1.875rem);
   font-weight: 700;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9rem;
 }
 
 .team-divider {
-  width: 36px;
-  height: 3px;
+  width: 48px;
+  height: 4px;
   background: #fff;
   border-radius: 2px;
   margin: 0 auto 0.875rem;
@@ -892,9 +896,9 @@ ul {
 .team-card-quote-bg {
   position: absolute;
   right: 0.7rem;
-  top: 25%;
+  top: 21%;
   transform: translateY(-50%);
-  font-size: clamp(2rem, 4.2vw, 3.3rem);
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
   color: rgba(120, 128, 138, 0.16);
   line-height: 0.8;
   pointer-events: none;
@@ -961,6 +965,58 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .team-dot:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
+}
+
+/* ============================================================
+   PRODUCTS SECTION
+   ============================================================ */
+.products {
+  background: #f5f5f5;
+  overflow: hidden;
+  padding: 0 0 5rem;
+}
+
+.products-header {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+/* Match About side spacing by reusing .container-about on this wrapper */
+.products-showcase {
+  display: block;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 2rem;
+}
+
+.products-media {
+  position: relative;
+  margin: 0;
+  background: #b4b4b4;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.products-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  background: #b4b4b4;
+}
+
+.products-caption {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.45rem;
+  margin: 0;
+  font-size: clamp(0.45rem, 0.8vw, 0.62rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: right;
+}
+
+.products-caption a {
+  color: #f58a8a;
 }
 
 
