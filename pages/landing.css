@@ -1059,13 +1059,15 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 /* Label — bottom-left, stacked, muted by default */
 .products-tab-label {
   position: absolute;
-  left: 0.6rem;
-  bottom: 0.6rem;
-  right: 2.4rem;        /* leave room so text doesn't go under arrow */
+  left: 1.25rem;
+  bottom: 1.25rem;
+  right: 2.6rem;
   z-index: 2;
   color: #B8B8B8;
-  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-family: var(--font);
+  font-size: clamp(0.82rem, 1.05vw, 1.05rem);
   font-weight: 700;
+  font-style: normal;
   line-height: 1.25;
   text-align: left;
 }
