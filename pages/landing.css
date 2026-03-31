@@ -455,7 +455,6 @@ ul {
 
 /* ============================================================
    ABOUT SECTION
-   Append everything below to the bottom of landing.css
    ============================================================ */
 
 /* ── Shared container ── */
@@ -1123,9 +1122,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 .products-panel {
-  margin: 3.45rem auto 0;
+  margin: 2rem auto 0;
   max-width: 860px;
   text-align: center;
+  padding: 1.5rem 1.5rem 0;
 }
 
 .products-tab:hover {
@@ -1142,10 +1142,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 .products-panel-title {
-  color: var(--blue);
-  font-size: clamp(2rem, 3.2vw, 3rem);
-  font-weight: 700;
-  line-height: 1.12;
   margin-bottom: 0.95rem;
 }
 
@@ -1158,10 +1154,9 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 .products-panel-subheader {
-  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
-  line-height: 1.5;
+  max-width: 760px;
   color: #2e3239;
-  margin: 0;
+  margin-inline: auto;
 }
 
 
@@ -1368,18 +1363,11 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     font-size: 1.2rem;
   }
 
-  .products-panel-title {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
-  }
-
-  .products-panel-subheader {
-    font-size: 0.92rem;
-  }
-
   .products-panel {
-    margin-top: 2.4rem;
+    padding: 1.25rem 1rem 0;
+    margin-top: 1.5rem;
   }
-
+  
   .team-deck-wrap {
     max-width: 390px;
     padding: 0.5rem 1.6rem 1.5rem;
