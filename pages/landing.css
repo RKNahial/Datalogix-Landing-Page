@@ -976,6 +976,18 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   padding: 0 0 5rem;
 }
 
+@media (max-width: 560px) {
+  .products-card {
+    width: 90%;
+  }
+
+  .products-card-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+
 .products::after {
   content: "";
   position: absolute;
@@ -996,7 +1008,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   padding-bottom: 2rem;
 }
 
-/* Match About side spacing by reusing .container-about on this wrapper */
 .products-showcase {
   position: relative;
   z-index: 1;
@@ -1177,6 +1188,214 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   margin-inline: auto;
 }
 
+/* ── Products Card Carousel ── */
+.products-carousel {
+  position: relative;
+  margin: 4rem auto 0;
+  max-width: 980px;
+  min-height: clamp(330px, 36vw, 450px);
+}
+
+.products-carousel[hidden] {
+  display: none;
+}
+
+.products-carousel-stage {
+  position: relative;
+  height: clamp(330px, 36vw, 450px);
+}
+
+.products-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40%;
+  height: 100%;
+  background: #F9F9F9;
+  border-radius: 22px 22px 0 0;
+  transform: translateX(-50%) scale(0.98);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(.4,0,.2,1),
+              opacity 0.45s cubic-bezier(.4,0,.2,1),
+              filter 0.45s ease;
+}
+
+.products-card.pc-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 4;
+  transform: translateX(-50%) scale(1);
+  filter: none;
+}
+
+.products-card.pc-left {
+  opacity: 1;
+  z-index: 2;
+  transform: translateX(-116%) rotate(-3deg) scale(0.82);
+  filter: brightness(0.88);
+}
+
+.products-card.pc-right {
+  opacity: 1;
+  z-index: 2;
+  transform: translateX(16%) rotate(3deg) scale(0.82);
+  filter: brightness(0.88);
+}
+
+.products-card.pc-hidden {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Icons row */
+.products-card-icons {
+  position: relative;
+  padding: 1rem 1.1rem 0;
+  min-height: 58px;
+  flex-shrink: 0;
+}
+
+.products-card-icon-left {
+  position: absolute;
+  top: 0.85rem;
+  left: 1.1rem;
+  color: #A80000;
+  font-size: clamp(1.3rem, 1.9vw, 1.75rem);
+}
+
+.products-card-icon-right {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  color: #A80000;
+  opacity: 0.1;
+  font-size: clamp(2rem, 2.9vw, 2.8rem);
+}
+
+/* Card content */
+.products-card-content {
+  padding: 0.5rem 1.1rem 0.4rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.products-card-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.products-card-number {
+  display: none;
+}
+
+.products-card-title {
+  color: #001C38;
+  font-family: var(--font);
+  font-size: clamp(1rem, 1.55vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.products-card-desc {
+  color: #000;
+  font-family: var(--font);
+  font-size: clamp(0.68rem, 0.85vw, 0.82rem);
+  line-height: 1.4;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Card image — fills remaining space */
+.products-card-media {
+  margin-top: auto;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+}
+
+.products-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 16px 16px;
+}
+
+/* Arrows — no border, correct direction */
+.products-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 5;
+  line-height: 0;
+}
+
+.products-arrow--prev {
+  left: -3%;
+}
+
+.products-arrow--next {
+  right: -3%;
+}
+
+.products-arrow svg {
+  width: clamp(22px, 2.8vw, 36px);
+  height: auto;
+}
+
+/* Hide the square border rect, keep only the arrow path */
+.products-arrow rect {
+  display: none;
+}
+
+/* Prev points LEFT — rotate the arrow path */
+.products-arrow--prev svg {
+  transform: rotate(180deg);
+}
+
+.products-arrow--next svg {
+  transform: none;
+}
+
+/* Dots */
+.products-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+}
+
+.products-carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: #C46A6A;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, width 0.2s, height 0.2s;
+}
+
+.products-carousel-dot.active {
+  width: 13px;
+  height: 13px;
+  background: #A80000;
+}
+
 
 /* ============================================================
    RESPONSIVE LAYOUT
@@ -1187,6 +1406,12 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
   .products-tabs {
     gap: 0.7rem;
+  }
+  .products-arrow--prev {
+    left: 1%;
+  }
+  .products-arrow--next {
+    right: 1%;
   }
 }
 
@@ -1233,6 +1458,27 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
   }
+
+  .products-carousel {
+    margin-top: 2.35rem;
+    min-height: clamp(340px, 88vw, 520px);
+  }
+
+   .products-carousel {
+    margin-top: 3rem;
+    min-height: clamp(300px, 80vw, 480px);
+  }
+
+  .products-carousel-stage {
+    height: clamp(300px, 80vw, 480px);
+  }
+
+  .products-card {
+    width: 62%;
+  }
+
+  .products-arrow--prev { left: 0; }
+  .products-arrow--next { right: 0; }
 
 .products-tab-label {
   position: absolute;
