@@ -1653,7 +1653,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .team-deck {
     width: 100%;
-    height: clamp(455px, 136vw, 560px);
+    height: clamp(370px, 112vw, 450px);
   }
 
   .team-card.tc-active { width: 78%; }
