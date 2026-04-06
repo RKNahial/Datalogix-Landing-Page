@@ -182,65 +182,69 @@ updateHeader();
 
 /* ---- Products Card Deck Carousel ---- */
 (function () {
-  const carousel = document.querySelector('.products-carousel');
-  if (!carousel) return;
+  const carousels = Array.from(document.querySelectorAll('.products-carousel'));
+  if (!carousels.length) return;
 
-  const cards = Array.from(carousel.querySelectorAll('.products-card'));
-  const dots = Array.from(carousel.querySelectorAll('.products-carousel-dot'));
-  const prev = carousel.querySelector('.products-arrow--prev');
-  const next = carousel.querySelector('.products-arrow--next');
-  const stage = carousel.querySelector('.products-carousel-stage');
-  const total = cards.length;
-  let active = 0;
+  carousels.forEach((carousel) => {
+    const cards = Array.from(carousel.querySelectorAll('.products-card'));
+    const dots = Array.from(carousel.querySelectorAll('.products-carousel-dot'));
+    const prev = carousel.querySelector('.products-arrow--prev');
+    const next = carousel.querySelector('.products-arrow--next');
+    const stage = carousel.querySelector('.products-carousel-stage');
+    const total = cards.length;
+    let active = 0;
 
-  function render(idx) {
-    const left = (idx - 1 + total) % total;
-    const right = (idx + 1) % total;
+    if (!total) return;
 
-    cards.forEach((card, i) => {
-      card.classList.remove('pc-active', 'pc-left', 'pc-right', 'pc-hidden');
-      if (i === idx) {
-        card.classList.add('pc-active');
-      } else if (i === left) {
-        card.classList.add('pc-left');
-      } else if (i === right) {
-        card.classList.add('pc-right');
-      } else {
-        card.classList.add('pc-hidden');
-      }
-    });
+    function render(idx) {
+      const left = (idx - 1 + total) % total;
+      const right = (idx + 1) % total;
 
-    dots.forEach((dot, i) => {
-      const on = i === idx;
-      dot.classList.toggle('active', on);
-      dot.setAttribute('aria-selected', String(on));
-    });
-  }
+      cards.forEach((card, i) => {
+        card.classList.remove('pc-active', 'pc-left', 'pc-right', 'pc-hidden');
+        if (i === idx) {
+          card.classList.add('pc-active');
+        } else if (i === left) {
+          card.classList.add('pc-left');
+        } else if (i === right) {
+          card.classList.add('pc-right');
+        } else {
+          card.classList.add('pc-hidden');
+        }
+      });
 
-  function goTo(index) {
-    active = (index + total) % total;
-    render(active);
-  }
+      dots.forEach((dot, i) => {
+        const on = i === idx;
+        dot.classList.toggle('active', on);
+        dot.setAttribute('aria-selected', String(on));
+      });
+    }
 
-  if (prev) prev.addEventListener('click', () => goTo(active - 1));
-  if (next) next.addEventListener('click', () => goTo(active + 1));
-  dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
+    function goTo(index) {
+      active = (index + total) % total;
+      render(active);
+    }
 
-  let startX = 0;
-  if (stage) {
-    stage.addEventListener('touchstart', (event) => {
-      startX = event.touches[0].clientX;
-    }, { passive: true });
+    if (prev) prev.addEventListener('click', () => goTo(active - 1));
+    if (next) next.addEventListener('click', () => goTo(active + 1));
+    dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
 
-    stage.addEventListener('touchend', (event) => {
-      const diff = startX - event.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) {
-        goTo(diff > 0 ? active + 1 : active - 1);
-      }
-    }, { passive: true });
-  }
+    let startX = 0;
+    if (stage) {
+      stage.addEventListener('touchstart', (event) => {
+        startX = event.touches[0].clientX;
+      }, { passive: true });
 
-  render(0);
+      stage.addEventListener('touchend', (event) => {
+        const diff = startX - event.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          goTo(diff > 0 ? active + 1 : active - 1);
+        }
+      }, { passive: true });
+    }
+
+    render(0);
+  });
 })();
 
 /* ---- Products Video Scroll Playback ---- */
