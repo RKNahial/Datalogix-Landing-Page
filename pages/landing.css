@@ -1409,11 +1409,11 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   background: #F9F9F9;
   border-radius: 12px;
   box-shadow: 0 10px 28px rgba(0, 28, 56, 0.08);
-  padding: 1.35rem 1.2rem;
+  padding: 0 1.2rem 1.35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.1rem;
   min-height: 178px;
 }
 
@@ -1425,20 +1425,21 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   place-items: center;
   color: #A80000;
   font-size: 3.28rem;
+  margin-top: -6px;
 }
 
 .tech-card h4 {
   font-size: 1rem;
   font-weight: 700;
   color: #001C38;
-  margin: 0;
+  margin: 0 0 0.8rem;
 }
 
 .tech-card p {
   font-size: 0.9rem;
   font-weight: 400;
   color: #000;
-  margin: 0;
+  margin: 0.0.0.1rem;
   line-height: 1.45;
 }
 
