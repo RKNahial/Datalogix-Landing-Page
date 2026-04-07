@@ -1392,6 +1392,56 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   text-align: left;
 }
 
+.products-tech {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0;
+  text-align: center;
+}
+
+.tech-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.tech-card {
+  background: #F9F9F9;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 28, 56, 0.08);
+  padding: 1.35rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 178px;
+}
+
+.tech-icon {
+  width: 113px;
+  height: 113px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #A80000;
+  font-size: 3.28rem;
+}
+
+.tech-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #001C38;
+  margin: 0;
+}
+
+.tech-card p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  line-height: 1.45;
+}
+
 .medical-wrapper {
   display: flex;
   flex-direction: column;
@@ -1481,6 +1531,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     margin-top: 2rem;
   }
 
+  .products-tech {
+    margin-top: 2rem;
+  }
+
   .medical-item,
   .medical-item--reverse {
     grid-template-columns: 1fr;
@@ -1500,6 +1554,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .medical-wrapper {
     gap: 2.25rem;
+  }
+
+  .products-tech {
+    margin-top: 1.5rem;
   }
 }
 
