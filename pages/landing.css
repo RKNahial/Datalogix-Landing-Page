@@ -1384,6 +1384,125 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   background: #A80000;
 }
 
+/* ── Medical & Laboratory layout ── */
+.products-medical {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0;
+  text-align: left;
+}
+
+.medical-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.medical-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 2.5rem;
+  justify-items: stretch;
+}
+
+.medical-item--reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.medical-media {
+  width: 100%;
+  max-width: 735px;
+  justify-self: stretch;
+}
+
+.medical-item--reverse .medical-media { order: 2; }
+.medical-item--reverse .medical-copy  { order: 1; }
+
+.medical-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 28px rgba(0, 28, 56, 0.1);
+  display: block;
+}
+
+.medical-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.medical-heading {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: #001C38;
+  margin: 0 0 0.15rem;
+  line-height: 1.25;
+}
+
+.medical-lead {
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+  color: #000;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.medical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.medical-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font);
+  font-size: clamp(0.75rem, 1.05vw, 0.875rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+.medical-list i {
+  color: #A80000;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .products-medical {
+    margin-top: 2rem;
+  }
+
+  .medical-item,
+  .medical-item--reverse {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .medical-item .medical-media       { order: 1; }
+  .medical-item .medical-copy        { order: 2; }
+  .medical-item--reverse .medical-media { order: 1; }
+  .medical-item--reverse .medical-copy  { order: 2; }
+}
+
+@media (max-width: 480px) {
+  .products-medical {
+    margin-top: 1.5rem;
+  }
+
+  .medical-wrapper {
+    gap: 2.25rem;
+  }
+}
+
 /* ============================================================
    RESPONSIVE LAYOUT
    ============================================================ */
@@ -1532,7 +1651,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     bottom: 0.4rem;
   }
 
-  /* Goal & Values — collapse to single column */
+  /* Goal & Values */
   .container-about-gv {
     grid-template-columns: 1fr;
     gap: 2rem;

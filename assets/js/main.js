@@ -128,7 +128,7 @@ updateHeader();
   const panel = document.getElementById('productsPanel');
   const titleEl = document.getElementById('productsPanelTitle');
   const descEl = document.getElementById('productsPanelSubheader');
-  const carousels = Array.from(document.querySelectorAll('.products-carousel'));
+  const contents = Array.from(document.querySelectorAll('.products-panel-content'));
 
   if (!tabs.length || !panel || !titleEl || !descEl) return;
 
@@ -151,18 +151,16 @@ updateHeader();
     titleEl.innerHTML = withRedLastWord(tab.dataset.title || '');
     descEl.textContent = tab.dataset.description || '';
 
-    if (carousels.length) {
-      carousels.forEach((carousel) => {
-        const show = Number(carousel.dataset.tab) === index;
-        carousel.classList.toggle('is-active', show);
-        carousel.setAttribute('aria-hidden', String(!show));
-        if (show) {
-          carousel.removeAttribute('hidden');
-        } else {
-          carousel.setAttribute('hidden', '');
-        }
-      });
-    }
+    contents.forEach((content) => {
+      const show = Number(content.dataset.tab) === index;
+      content.classList.toggle('is-active', show);
+      content.setAttribute('aria-hidden', String(!show));
+      if (show) {
+        content.removeAttribute('hidden');
+      } else {
+        content.setAttribute('hidden', '');
+      }
+    });
   }
 
   tabs.forEach((tab, index) => {
