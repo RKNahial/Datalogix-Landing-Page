@@ -1637,8 +1637,38 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .digital-wrapper {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .digital-card {
+    max-width: 100%;
+    aspect-ratio: 373 / 410;
+  }
+
+  .digital-card-body {
+    padding: 0.95rem 1rem 1.25rem;
+  }
+
+  .digital-card-body h4 {
+    font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+    line-height: 1.2;
+  }
+
+  .digital-card-badge {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .digital-card-mark {
+    right: -0.8rem;
+    bottom: -0.5rem;
+    width: 114px;
+    height: 114px;
+    font-size: 3.35rem;
   }
 
   .medical-item,
@@ -1672,6 +1702,36 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .digital-wrapper {
     grid-template-columns: 1fr;
+    gap: 0.95rem;
+    max-width: 100%;
+  }
+
+  .digital-card {
+    aspect-ratio: 373 / 390;
+  }
+
+  .digital-card-body {
+    padding: 0.9rem 0.95rem 1.35rem;
+  }
+
+  .digital-card-body h4 {
+    font-size: clamp(1rem, 4.8vw, 1.16rem);
+  }
+
+  .digital-card-badge {
+    top: 0.65rem;
+    right: 0.65rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+
+  .digital-card-mark {
+    right: -0.65rem;
+    bottom: -0.35rem;
+    width: 108px;
+    height: 108px;
+    font-size: 3.2rem;
   }
 }
 
