@@ -1417,7 +1417,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 28, 56, 0.08);
   min-width: 0;
-  aspect-ratio: 373 / 475;
+  aspect-ratio: 373 / 480;
   display: flex;
   flex-direction: column;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
