@@ -1415,6 +1415,14 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   align-items: center;
   gap: 0.1rem;
   min-height: 178px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-card:hover,
+.tech-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 28, 56, 0.1);
+  outline: none;
 }
 
 .tech-icon {
