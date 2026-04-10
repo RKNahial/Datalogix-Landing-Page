@@ -2092,7 +2092,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     padding-bottom: 1.45rem;
   }
 
-  /* clients — reduce negative space, scale header & content proportionally */
   .clients-grid {
     grid-template-columns: 1fr;
     padding: 0 1rem;
@@ -2102,20 +2101,20 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .client-card {
-    border-radius: 20px;
-    aspect-ratio: 31 / 33; /* slightly shorter card to reduce bottom whitespace */
+  border-radius: 20px;
+  aspect-ratio: 31 / 33;
   }
 
   .client-card-media {
-    border-radius: 20px 20px 0 0;
-    margin-bottom: 0.9rem; /* keeps icon placement stable */
+  border-radius: 20px 20px 0 0;
+  margin-bottom: 0.9rem;
   }
 
   .client-card-icon {
     left: 0.85rem;
     width: 68px;
     height: 68px;
-    transform: translateY(40%); /* maintains visual overlap while freeing vertical space */
+    transform: translateY(40%);
   }
 
   .client-card-icon i {
@@ -2123,17 +2122,16 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .client-card-body {
-    padding: 1.2rem 0.95rem 1rem; /* reduce top padding so content occupies less empty space */
+    padding: 1.2rem 0.95rem 1rem; 
     gap: 0.4rem;
   }
 
   .client-card h3 {
-    font-size: clamp(0.92rem, 3.6vw, 1.06rem); /* proportionally smaller header */
-    margin: 0 0 0.45rem;
+    font-size: clamp(0.92rem, 3.6vw, 1.06rem); 
   }
 
   .client-card p {
-    font-size: clamp(0.72rem, 2.8vw, 0.86rem); /* proportionally smaller body text */
+    font-size: clamp(0.72rem, 2.8vw, 0.86rem); 
     line-height: 1.36;
     margin: 0;
   }
