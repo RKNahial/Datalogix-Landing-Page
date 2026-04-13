@@ -267,3 +267,63 @@ updateHeader();
 
   observer.observe(video);
 })();
+
+/* ---- Gallery Showcase ---- */
+(function () {
+  const featureImage = document.getElementById('galleryFeatureImage');
+  const featureTitle = document.getElementById('galleryFeatureTitle');
+  const featureCategory = document.getElementById('galleryFeatureCategory');
+  const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+  const prev = document.getElementById('galleryPrev');
+  const next = document.getElementById('galleryNext');
+
+  if (!featureImage || !featureTitle || !featureCategory || !thumbs.length || !prev || !next) return;
+
+  let activeIndex = 0;
+  let startIndex = 0;
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    return 3;
+  }
+
+  function render() {
+    const visibleCount = getVisibleCount();
+
+    if (activeIndex < startIndex) startIndex = activeIndex;
+    if (activeIndex >= startIndex + visibleCount) startIndex = activeIndex - visibleCount + 1;
+    if (startIndex > thumbs.length - visibleCount) startIndex = Math.max(thumbs.length - visibleCount, 0);
+
+    const active = thumbs[activeIndex];
+    featureImage.src = active.dataset.image || featureImage.src;
+    featureImage.alt = active.dataset.alt || '';
+    featureTitle.textContent = active.dataset.title || '';
+    featureCategory.textContent = active.dataset.category || '';
+
+    thumbs.forEach((thumb, index) => {
+      const isActive = index === activeIndex;
+      const isVisible = index >= startIndex && index < startIndex + visibleCount;
+      thumb.classList.toggle('is-active', isActive);
+      thumb.classList.toggle('is-hidden', !isVisible);
+      thumb.setAttribute('aria-selected', String(isActive));
+      thumb.tabIndex = isVisible ? 0 : -1;
+    });
+  }
+
+  function goTo(index) {
+    const total = thumbs.length;
+    activeIndex = (index + total) % total;
+    render();
+  }
+
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => goTo(index));
+  });
+
+  prev.addEventListener('click', () => goTo(activeIndex - 1));
+  next.addEventListener('click', () => goTo(activeIndex + 1));
+  window.addEventListener('resize', render, { passive: true });
+
+  render();
+})();
