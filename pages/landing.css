@@ -1825,15 +1825,17 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .gallery-thumb-title {
   position: absolute;
   z-index: 2;
-  left: 0.35rem;
-  right: 0.35rem;
+  left: 0.5rem;
+  right: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
   color: #fff;
-  font-size: clamp(0.52rem, 0.85vw, 0.72rem);
+  font-size: clamp(0.6rem, 1.1vw, 0.9rem);
   font-weight: 700;
   line-height: 1.2;
+  padding: 0.25rem 0.45rem;
+  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
@@ -2573,7 +2575,9 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .gallery-thumb-title {
-    font-size: clamp(0.58rem, 2.8vw, 0.72rem);
+    font-size: clamp(0.66rem, 3.2vw, 0.86rem);
+    padding: 0.3rem 0.5rem;
+    box-sizing: border-box;
   }
 
   .clients-grid {
