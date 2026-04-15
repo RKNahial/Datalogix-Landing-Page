@@ -2544,12 +2544,22 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   .gallery-nav {
     width: 34px;
     height: 34px;
+
+    transform: none;
   }
-  .gallery-nav--prev { margin-right: calc(34px * -0.4); }
-  .gallery-nav--next { margin-left: calc(34px * -0.4); }
+
+  .gallery-nav--prev { margin-left: 12px; }
+  .gallery-nav--next { margin-right: 12px; }
 
   .gallery-nav i {
     font-size: 0.85rem;
+  }
+
+  .gallery-nav:hover,
+  .gallery-nav:focus-visible {
+    transform: scale(1.07);
+    background: #8f0000;
+    outline: none;
   }
 
   .gallery-thumbs {
