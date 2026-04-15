@@ -1706,6 +1706,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 0.35rem;
+  overflow: visible; /* allow thumbs to extend under arrow circles */
 }
 
 /* Arrows */
@@ -1744,8 +1745,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.3rem;
-  overflow: hidden;
+  gap: 0.4rem;
+  overflow: visible;
+  width: calc(100% + clamp(36px, 4.2vw, 48px));
+  margin: 0 calc(-1 * clamp(18px, 2.1vw, 24px));
 }
 
 .gallery-thumbs.is-shifting-next {
