@@ -1706,7 +1706,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 0.35rem;
-  overflow: visible; /* allow thumbs to extend under arrow circles */
+  overflow: visible; 
 }
 
 /* Arrows */
@@ -1745,10 +1745,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.4rem;
+  gap: clamp(0.32rem, 0.9vw, 0.5rem);
   overflow: visible;
-  width: calc(100% + clamp(36px, 4.2vw, 48px));
-  margin: 0 calc(-1 * clamp(18px, 2.1vw, 24px));
+  width: calc(100% + clamp(70px, 7vw, 92px));
+  margin: 0 calc(-1 * clamp(34px, 3.4vw, 46px));
 }
 
 .gallery-thumbs.is-shifting-next {
@@ -1766,7 +1766,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   border-radius: 8px;
   overflow: hidden;
   padding: 0;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 148 / 120;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
