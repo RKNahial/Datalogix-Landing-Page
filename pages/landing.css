@@ -1701,7 +1701,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
 /* ── Thumbs row ── */
 .gallery-thumbs-wrap {
-  margin-top: 0.5rem;
+  margin-top: clamp(0.6rem, 1.5vw, 1rem);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -1725,7 +1725,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   flex-shrink: 0;
   transition: transform 0.2s ease, background 0.2s ease;
   position: relative;
-  z-index: 2;
+  z-index: 10; /* Increased z-index to ensure it's above thumbnails */
   --shift: 0px;
   transform: translateX(var(--shift));
 }
@@ -1745,10 +1745,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 /* ── Thumb grid ── */
-  .gallery-thumbs {
+.gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(0.32rem, 0.9vw, 0.5rem);
+  gap: clamp(0.6rem, 1.5vw, 1rem);
   overflow: visible;
   width: calc(100% + clamp(60px, 6vw, 92px));
   margin: 0 calc(-1 * clamp(30px, 3vw, 46px));
@@ -1766,7 +1766,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .gallery-thumb {
   position: relative;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   padding: 0;
   aspect-ratio: 148 / 120;
@@ -1789,27 +1789,27 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.40);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.60);
   transition: background 0.25s ease;
 }
 
 /* Active */
+.gallery-thumb.is-active {
+  transform: scale(1.05); /* Reduced scale to prevent overlap */
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
 .gallery-thumb.is-active::after {
   background: transparent;
 }
 
-/* Hover */
-.gallery-thumb:hover::after,
-.gallery-thumb:focus-visible::after {
-  background: rgba(0, 0, 0, 0.60);
-}
-
-.gallery-thumb:hover,
-.gallery-thumb:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
-  outline: none;
+/* Active Hover */
+.gallery-thumb.is-active:hover,
+.gallery-thumb.is-active:focus-visible {
+  transform: scale(1.07) translateY(-2px); /* Adjusted scale for active hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
 }
 
 /* ── Thumb text labels ── */
@@ -2310,9 +2310,13 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     aspect-ratio: 16 / 9;
   }
 
+  .gallery-thumbs-wrap {
+    margin-top: clamp(0.5rem, 1.2vw, 0.8rem);
+  }
+
   .gallery-thumbs {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.28rem, 0.9vw, 0.45rem);
+    gap: clamp(0.5rem, 1.2vw, 0.8rem);
     width: calc(100% + clamp(40px, 5.2vw, 64px));
     margin: 0 calc(-1 * clamp(20px, 2.6vw, 32px));
   }
@@ -2540,6 +2544,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .gallery-thumbs-wrap {
+    margin-top: clamp(0.4rem, 1vw, 0.6rem);
     gap: 0.25rem;
   }
 
@@ -2566,7 +2571,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .gallery-thumbs {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.18rem, 0.9vw, 0.3rem);
+    gap: clamp(0.4rem, 1vw, 0.6rem);
     width: calc(100% + clamp(24px, 4vw, 40px));
     margin: 0 calc(-1 * clamp(12px, 2vw, 20px));
   }
@@ -2575,9 +2580,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 
   .gallery-thumb-title {
-    font-size: clamp(0.66rem, 3.2vw, 0.86rem);
-    padding: 0.3rem 0.5rem;
-    box-sizing: border-box;
+    display: none;
   }
 
   .clients-grid {
