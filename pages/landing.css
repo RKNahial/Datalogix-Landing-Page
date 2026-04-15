@@ -2307,6 +2307,12 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .gallery-thumbs {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.28rem, 0.9vw, 0.45rem);
+    width: calc(100% + clamp(36px, 4vw, 48px));
+    margin: 0 calc(-1 * clamp(18px, 2vw, 24px));
+  }
+  .gallery-thumb {
+    aspect-ratio: 128 / 120;
   }
 
   .gallery-feature-copy h3 {
@@ -2543,7 +2549,12 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
   .gallery-thumbs {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.22rem;
+    gap: clamp(0.18rem, 0.9vw, 0.3rem);
+    width: calc(100% + clamp(24px, 4vw, 36px));
+    margin: 0 calc(-1 * clamp(12px, 2vw, 18px));
+  }
+  .gallery-thumb {
+    aspect-ratio: 120 / 120;
   }
 
   .gallery-thumb-title {
