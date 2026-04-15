@@ -270,6 +270,8 @@ updateHeader();
 
 /* ---- Gallery Showcase ---- */
 (function () {
+  const feature = document.querySelector('.gallery-feature');
+  const thumbsWrap = document.querySelector('.gallery-thumbs');
   const featureImage = document.getElementById('galleryFeatureImage');
   const featureTitle = document.getElementById('galleryFeatureTitle');
   const featureCategory = document.getElementById('galleryFeatureCategory');
@@ -277,15 +279,15 @@ updateHeader();
   const prev = document.getElementById('galleryPrev');
   const next = document.getElementById('galleryNext');
 
-  if (!featureImage || !featureTitle || !featureCategory || !thumbs.length || !prev || !next) return;
+  if (!feature || !thumbsWrap || !featureImage || !featureTitle || !featureCategory || !thumbs.length || !prev || !next) return;
 
   let activeIndex = 0;
   let startIndex = 0;
 
   function getVisibleCount() {
-    if (window.innerWidth <= 480) return 1;
-    if (window.innerWidth <= 768) return 2;
-    return 3;
+    if (window.innerWidth <= 480) return 3;
+    if (window.innerWidth <= 768) return 4;
+    return 5;
   }
 
   function render() {
@@ -311,8 +313,19 @@ updateHeader();
     });
   }
 
-  function goTo(index) {
+  function animateShift(direction) {
+    feature.classList.remove('is-swapping');
+    void feature.offsetWidth;
+    feature.classList.add('is-swapping');
+
+    thumbsWrap.classList.remove('is-shifting-next', 'is-shifting-prev');
+    void thumbsWrap.offsetWidth;
+    thumbsWrap.classList.add(direction === 'prev' ? 'is-shifting-prev' : 'is-shifting-next');
+  }
+
+  function goTo(index, direction = null) {
     const total = thumbs.length;
+    if (direction) animateShift(direction);
     activeIndex = (index + total) % total;
     render();
   }
@@ -321,8 +334,8 @@ updateHeader();
     thumb.addEventListener('click', () => goTo(index));
   });
 
-  prev.addEventListener('click', () => goTo(activeIndex - 1));
-  next.addEventListener('click', () => goTo(activeIndex + 1));
+  prev.addEventListener('click', () => goTo(activeIndex - 1, 'prev'));
+  next.addEventListener('click', () => goTo(activeIndex + 1, 'next'));
   window.addEventListener('resize', render, { passive: true });
 
   render();
