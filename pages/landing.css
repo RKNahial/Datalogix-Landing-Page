@@ -2137,7 +2137,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .contact-info {
   flex: 0 0 50%;
   background: #FFF;
-  padding: clamp(2rem, 4vh, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2.5rem, 5vh, 3.5rem) clamp(2rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -2148,6 +2148,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   font-size: clamp(1.2rem, 2.2vw, 1.75rem);
   font-weight: 700;
   color: #000;
+  margin-top: clamp(1.2rem, 2.5vh, 2rem);
   margin-bottom: 0.75rem;
   line-height: 1.2;
 }
@@ -2158,13 +2159,13 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   font-weight: 400;
   color: #000;
   line-height: 1.4;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .contact-info-items {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.1rem, 2.5vh, 1.75rem);
+  gap: clamp(1.75rem, 4vh, 2.5rem);
 }
 
 .contact-info-item {
@@ -2174,8 +2175,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 }
 
 .contact-info-icon {
-  width: clamp(44px, 4.5vw, 54px);
-  height: clamp(44px, 4.5vw, 54px);
+  width: clamp(48px, 5vw, 58px);
+  height: clamp(48px, 5vw, 58px);
   background: #A80000;
   border-radius: 50%;
   display: flex;
@@ -2183,7 +2184,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   justify-content: center;
   flex-shrink: 0;
   color: #fff;
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   box-shadow: 0 4px 10px rgba(168, 0, 0, 0.2);
 }
 
@@ -2206,7 +2207,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 /* Right side: Form */
 .contact-form-wrap {
   flex: 0 0 50%;
-  padding: clamp(2rem, 4vh, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2.5rem, 5vh, 3.5rem) clamp(2rem, 4vw, 3.5rem);
   background: #F9F9F9;
   display: flex;
   flex-direction: column;
@@ -2350,6 +2351,10 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     flex: unset;
     border-radius: 24px 24px 0 0;
     padding: 2.5rem 1.5rem;
+  }
+
+  .contact-info h3 {
+    margin-top: 0;
   }
 
   .contact-form-wrap {
