@@ -1805,6 +1805,11 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   background: transparent;
 }
 
+.gallery-thumb.is-active:hover::after,
+.gallery-thumb.is-active:focus-visible::after {
+  background: rgba(0, 0, 0, 0.60);
+}
+
 /* Active Hover */
 .gallery-thumb.is-active:hover,
 .gallery-thumb.is-active:focus-visible {
@@ -1825,8 +1830,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 .gallery-thumb-title {
   position: absolute;
   z-index: 2;
-  left: 0.5rem;
-  right: 0.5rem;
+  left: 1.25rem;
+  right: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
@@ -1834,7 +1839,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   font-size: clamp(0.6rem, 1.1vw, 0.9rem);
   font-weight: 700;
   line-height: 1.2;
-  padding: 0.25rem 0.45rem;
+  padding: 0.45rem 0.6rem;
   box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.2s ease;
