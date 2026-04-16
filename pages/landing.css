@@ -2093,6 +2093,223 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   margin-top: 0.2rem;
 }
 
+/* ── Contact Us ── */
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(50% 50% at 50% 50%, 
+    rgba(180, 17, 13, 0.95) 0%, 
+    rgba(124, 16, 19, 0.95) 98.56%);
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
+}
+
+.contact-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-grid-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+
+.contact-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.contact-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.9rem;
+}
+
+.contact-divider {
+  width: 64px;
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  background: #F9F9F9;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: -2px 8px 12.1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Left side: Contact Info */
+.contact-info {
+  flex: 0 0 40%;
+  background: #FFF;
+  padding: clamp(2rem, 3.5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.25rem); /* ~22px to 36px */
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.contact-info-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.9rem, 1.35vw, 1.15rem); /* ~14px to 18px */
+  font-weight: 400;
+  color: #000;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.contact-info-icon {
+  width: clamp(58px, 6vw, 84px);
+  height: clamp(58px, 6vw, 84px);
+  background: #A80000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  box-shadow: 0 4px 12px rgba(168, 0, 0, 0.2);
+}
+
+.contact-info-text h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem); /* ~18px to 22px */
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.35rem;
+}
+
+.contact-info-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem); /* ~14px to 18px */
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+/* Right side: Form */
+.contact-form-wrap {
+  flex: 1;
+  padding: clamp(2rem, 4.5vw, 4.5rem);
+  background: #F9F9F9;
+}
+
+.contact-form-wrap h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* ~20px to 25px */
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.form-group label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem); /* ~15px to 18px */
+  font-weight: 700;
+  color: #000;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  border-radius: 11px;
+  border: 2px solid #F5F5F5;
+  background: #FFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #8D8D8D;
+  font-weight: 400;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #A80000;
+  box-shadow: 0 0 0 4px rgba(168, 0, 0, 0.08);
+}
+
+.contact-submit {
+  width: 100%;
+  height: clamp(56px, 6vw, 74px);
+  background: #A80000;
+  color: #FFF;
+  border: none;
+  border-radius: 11px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem); /* ~16px to 20px */
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.contact-submit:hover,
+.contact-submit:focus-visible {
+  background: #8F0000;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.contact-submit:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 768px) {
   .products-medical {
     margin-top: 2rem;
@@ -2140,6 +2357,26 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     height: 114px;
     font-size: 3.35rem;
   }
+
+  .contact-card {
+    flex-direction: column;
+    border-radius: 24px;
+  }
+
+  .contact-info {
+    flex: unset;
+    border-radius: 24px 24px 0 0;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .contact-form-wrap {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .contact-info-items {
+    gap: 1.5rem;
+  }
+}
 
   .medical-item,
   .medical-item--reverse {
@@ -2202,6 +2439,24 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     width: 108px;
     height: 108px;
     font-size: 3.2rem;
+  }
+
+  .contact-card {
+    border-radius: 16px;
+  }
+
+  .contact-info {
+    border-radius: 16px 16px 0 0;
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-form-wrap {
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-info-icon {
+    width: 52px;
+    height: 52px;
   }
 }
 
