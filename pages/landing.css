@@ -3145,8 +3145,29 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.25s ease;
-  cursor: default;
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.footer-contact-text a:hover,
+.footer-contact-text a:focus-visible {
+  color: var(--red);
+  text-decoration: none;
+  outline: none;
+}
+
+.address-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.address-link:hover,
+.address-link:focus-visible {
+  color: var(--red);
+  text-decoration: none;
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
 }
 
 .footer-contact-text-item {
