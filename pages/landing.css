@@ -1790,7 +1790,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   position: absolute;
   inset: 0;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.60);
+  background: transparent;
   transition: background 0.25s ease;
 }
 
@@ -1803,6 +1803,11 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
 
 .gallery-thumb.is-active::after {
   background: transparent;
+}
+
+.gallery-thumb:hover::after,
+.gallery-thumb:focus-visible::after {
+  background: rgba(0, 0, 0, 0.60);
 }
 
 .gallery-thumb.is-active:hover::after,
@@ -1846,9 +1851,17 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   pointer-events: none;
 }
 
+.gallery-thumb .gallery-thumb-title {
+  opacity: 0;
+}
+
 .gallery-thumb:hover .gallery-thumb-title,
 .gallery-thumb:focus-visible .gallery-thumb-title {
   opacity: 1;
+}
+
+.gallery-thumb.is-active .gallery-thumb-title {
+  opacity: 0;
 }
 
 /* Active thumb  */
