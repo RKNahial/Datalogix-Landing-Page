@@ -16,6 +16,26 @@ mobileNav.querySelectorAll('a').forEach(a => {
   });
 });
 
+/* ---- Back to Top Button ---- */
+const backToTopBtn = document.getElementById('backToTopBtn');
+
+function toggleBackToTop() {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
+}
+
+window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 /* ---- Carousel ---- */
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
