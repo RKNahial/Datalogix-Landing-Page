@@ -360,3 +360,68 @@ updateHeader();
 
   render();
 })();
+
+/* ---- Contact Form (EmailJS) ---- */
+(function () {
+  const SERVICE_ID = 'service_x9pyfl4';
+  const TEMPLATE_ID = 'template_jjg2d6z';
+  const PUBLIC_KEY = 'M1oKTg0ffyg3WTclk';
+
+  if (typeof emailjs === 'undefined') {
+    console.error('EmailJS SDK failed to load.');
+    return;
+  }
+
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const submitBtn = form.querySelector('.contact-submit');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Basic client-side validation
+    const name    = form.querySelector('#name').value.trim();
+    const email   = form.querySelector('#email').value.trim();
+    const subject = form.querySelector('#subject').value.trim();
+    const message = form.querySelector('#message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      alert('Please fill in all fields before sending.');
+      return;
+    }
+
+    // Disable button while sending
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const templateParams = {
+      from_name:  name,
+      from_email: email,
+      subject:    subject,
+      message:    message,
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+      .then(function () {
+        submitBtn.textContent = 'Message Sent!';
+        submitBtn.style.background = '#2a7a2a';
+        form.reset();
+
+        // Reset button after 4 seconds
+        setTimeout(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          submitBtn.style.background = '';
+        }, 4000);
+      })
+      .catch(function (error) {
+        console.error('EmailJS error:', error);
+        alert('Something went wrong. Please try again or email us directly at datalogix101@gmail.com');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+  });
+})();

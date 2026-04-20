@@ -37,6 +37,9 @@
   <!-- Font Awesome Icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <!-- Custom CSS -->
   <link href="pages/landing.css" rel="stylesheet">
 </head>
@@ -1272,7 +1275,7 @@
         <!-- Right side: Form -->
         <div class="contact-form-wrap">
           <h3>Fill Out this Quick Form:</h3>
-          <form class="contact-form" action="#" method="POST">
+          <form class="contact-form" id="contactForm" action="#" method="POST" novalidate>
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" placeholder="Enter your full name" required>
