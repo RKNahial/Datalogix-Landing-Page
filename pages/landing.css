@@ -2366,6 +2366,7 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 }
 
+@media (max-width: 768px) {
   .medical-item,
   .medical-item--reverse {
     grid-template-columns: 1fr;
