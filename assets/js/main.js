@@ -528,7 +528,7 @@ updateHeader();
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
           submitBtn.style.background = '';
-        }, 4000);
+        }, 5000);
       })
       .catch(function (error) {
         console.error('EmailJS error:', error);
