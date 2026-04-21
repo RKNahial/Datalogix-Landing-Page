@@ -508,18 +508,16 @@ updateHeader();
     setFormStatus('', '');
 
   const templateParams = {
-    from_name: fields.name.value.trim(),
-    from_email: fields.email.value.trim(),
-    subject: fields.subject.value.trim(),
-    message: fields.message.value.trim(),
-    time: new Date().toLocaleString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric',
-      hour: '2-digit', 
-      minute: '2-digit'
-    })
-  };
+  from_name : fields.name.value.trim(),
+  from_email: fields.email.value.trim(),
+  subject   : fields.subject.value.trim(),
+  message   : fields.message.value.trim(),
+  initial   : fields.name.value.trim().charAt(0).toUpperCase(),
+  time      : new Date().toLocaleString('en-US', {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  })
+};
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
       .then(function () {
