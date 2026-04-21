@@ -642,10 +642,7 @@ updateHeader();
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  let heroAnimDone = false;
-
   const heroSteps = [
-    { el: document.getElementById('header'),        delay: 0   },
     { el: document.querySelector('.hero-bg'),       delay: 0   },
     { el: document.querySelector('.hero-text h1'),  delay: 150 },
     { el: document.querySelector('.hero-text p'),   delay: 300 },
@@ -654,6 +651,24 @@ updateHeader();
   ];
 
   function runHero() {
+    const atTop = window.scrollY < 10;
+
+    // Only animate the header if user is at the top
+    if (atTop) {
+      const headerEl = document.getElementById('header');
+      headerEl.style.opacity    = '0';
+      headerEl.style.transform  = 'translateY(24px)';
+      headerEl.style.transition = 'none';
+      setTimeout(() => {
+        headerEl.style.transition = `opacity 0.65s cubic-bezier(.4,0,.2,1),
+                                     transform 0.65s cubic-bezier(.4,0,.2,1)`;
+        requestAnimationFrame(() => {
+          headerEl.style.opacity   = '1';
+          headerEl.style.transform = 'translateY(0)';
+        });
+      }, 0);
+    }
+
     heroSteps.forEach(({ el, delay }) => {
       if (!el) return;
       el.style.opacity    = '0';
@@ -670,17 +685,19 @@ updateHeader();
       }, delay);
     });
 
-    setTimeout(() => {
-      heroAnimDone = true;
-    }, 580 + 650);
-  }
+    if (atTop) {
+      let heroAnimDone = false;
+      setTimeout(() => { heroAnimDone = true; }, 580 + 650);
 
-  const originalUpdateHeader = window.updateHeader;
-  window.addEventListener('scroll', () => {
-    if (!heroAnimDone) {
-      document.getElementById('header').classList.remove('scrolled');
+      window.addEventListener('scroll', function guardHeader() {
+        if (heroAnimDone) {
+          window.removeEventListener('scroll', guardHeader);
+          return;
+        }
+        document.getElementById('header').classList.remove('scrolled');
+      }, { passive: true });
     }
-  }, { passive: true });
+  }
 
   if (document.readyState === 'complete') {
     runHero();
