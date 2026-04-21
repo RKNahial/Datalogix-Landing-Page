@@ -363,9 +363,16 @@ updateHeader();
 
 /* ---- Contact Form (EmailJS) ---- */
 (function () {
-  const SERVICE_ID = 'service_x9pyfl4';
-  const TEMPLATE_ID = 'template_jjg2d6z';
-  const PUBLIC_KEY = 'M1oKTg0ffyg3WTclk';
+  // DATALOGIX EMAILJS
+  // const SERVICE_ID = 'service_x9pyfl4';
+  // const TEMPLATE_ID = 'template_jjg2d6z';
+  // const PUBLIC_KEY = 'M1oKTg0ffyg3WTclk';
+
+  // TESTING EMAIL
+  const SERVICE_ID = 'service_xh8qfsb';
+  const TEMPLATE_ID = 'template_cqjq79l';
+  const PUBLIC_KEY = 'KEapMb2nmrOZb6nIU';
+
 
   if (typeof emailjs === 'undefined') {
     console.error('EmailJS SDK failed to load.');
