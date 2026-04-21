@@ -1278,19 +1278,19 @@
           <form class="contact-form" id="contactForm" action="#" method="POST" novalidate>
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" minlength="2" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              <input type="email" id="email" name="email" placeholder="Enter your email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" autocomplete="email" required>
             </div>
             <div class="form-group">
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Enter your subject" required>
+              <input type="text" id="subject" name="subject" placeholder="Enter your subject" minlength="3" required>
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Tell us how we can help you" required></textarea>
+              <textarea id="message" name="message" rows="4" minlength="10" placeholder="Tell us how we can help you" required></textarea>
             </div>
             <button type="submit" class="contact-submit">Send Message</button>
           </form>

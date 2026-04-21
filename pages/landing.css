@@ -2241,6 +2241,38 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   gap: 0.85rem;
 }
 
+.contact-form-status {
+  display: none;
+  border-radius: 11px;
+  padding: 0.72rem 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.contact-form-status.is-visible {
+  display: block;
+}
+
+.contact-form-status.is-error {
+  background: #fff1f1;
+  border-color: #f3bbbb;
+  color: #7f1111;
+}
+
+.contact-form-status.is-success {
+  background: #eefaf1;
+  border-color: #b8e2c2;
+  color: #196a2f;
+}
+
+.contact-form-status.is-info {
+  background: #eef5ff;
+  border-color: #bfd4f3;
+  color: #1a4f8d;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -2278,6 +2310,24 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   outline: none;
   border-color: #A80000;
   box-shadow: 0 0 0 4px rgba(168, 0, 0, 0.08);
+}
+
+.form-group input.is-invalid,
+.form-group textarea.is-invalid {
+  border-color: #c81f1f;
+  box-shadow: 0 0 0 4px rgba(200, 31, 31, 0.08);
+}
+
+.form-error {
+  display: none;
+  color: #a80000;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.form-error.is-visible {
+  display: block;
 }
 
 .contact-submit {

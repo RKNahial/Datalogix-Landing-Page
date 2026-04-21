@@ -385,37 +385,143 @@ updateHeader();
   if (!form) return;
 
   const submitBtn = form.querySelector('.contact-submit');
+  const fields = {
+    name: form.querySelector('#name'),
+    email: form.querySelector('#email'),
+    subject: form.querySelector('#subject'),
+    message: form.querySelector('#message')
+  };
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  const statusBox = document.createElement('p');
+  statusBox.className = 'contact-form-status';
+  statusBox.setAttribute('role', 'status');
+  statusBox.setAttribute('aria-live', 'polite');
+  form.prepend(statusBox);
+  let statusTimer = null;
+
+  function setFormStatus(type, message) {
+    if (statusTimer) {
+      clearTimeout(statusTimer);
+      statusTimer = null;
+    }
+    statusBox.classList.remove('is-error', 'is-success', 'is-info', 'is-visible');
+    if (!type || !message) {
+      statusBox.textContent = '';
+      return;
+    }
+    statusBox.textContent = message;
+    statusBox.classList.add('is-visible', `is-${type}`);
+  }
+
+  function ensureErrorElement(input) {
+    let errorEl = input.parentElement.querySelector('.form-error');
+    if (!errorEl) {
+      errorEl = document.createElement('p');
+      errorEl.className = 'form-error';
+      errorEl.id = `${input.id}-error`;
+      errorEl.setAttribute('aria-live', 'polite');
+      input.parentElement.appendChild(errorEl);
+    }
+    input.setAttribute('aria-describedby', errorEl.id);
+    return errorEl;
+  }
+
+  function setFieldError(input, message) {
+    const errorEl = ensureErrorElement(input);
+    if (message) {
+      input.classList.add('is-invalid');
+      input.setAttribute('aria-invalid', 'true');
+      errorEl.textContent = message;
+      errorEl.classList.add('is-visible');
+      return false;
+    }
+
+    input.classList.remove('is-invalid');
+    input.setAttribute('aria-invalid', 'false');
+    errorEl.textContent = '';
+    errorEl.classList.remove('is-visible');
+    return true;
+  }
+
+  function validateField(fieldName) {
+    const input = fields[fieldName];
+    const value = input.value.trim();
+
+    if (fieldName === 'name') {
+      if (!value) return setFieldError(input, 'Please enter your full name.');
+      if (value.length < 2) return setFieldError(input, 'Name must be at least 2 characters.');
+      return setFieldError(input, '');
+    }
+
+    if (fieldName === 'email') {
+      if (!value) return setFieldError(input, 'Please enter your email address.');
+      if (!emailRegex.test(value)) return setFieldError(input, 'Please enter a valid email (example@domain.com).');
+      return setFieldError(input, '');
+    }
+
+    if (fieldName === 'subject') {
+      if (!value) return setFieldError(input, 'Please enter a subject.');
+      if (value.length < 3) return setFieldError(input, 'Subject must be at least 3 characters.');
+      return setFieldError(input, '');
+    }
+
+    if (fieldName === 'message') {
+      if (!value) return setFieldError(input, 'Please enter your message.');
+      if (value.length < 10) return setFieldError(input, 'Message must be at least 10 characters.');
+      return setFieldError(input, '');
+    }
+
+    return true;
+  }
+
+  function validateForm() {
+    const keys = Object.keys(fields);
+    const invalid = keys.filter((key) => !validateField(key));
+    return { valid: invalid.length === 0, invalid };
+  }
+
+  Object.keys(fields).forEach((key) => {
+    const input = fields[key];
+    ensureErrorElement(input);
+    input.addEventListener('blur', () => validateField(key));
+    input.addEventListener('input', () => {
+      setFormStatus('', '');
+      if (input.classList.contains('is-invalid')) validateField(key);
+    });
+  });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Basic client-side validation
-    const name    = form.querySelector('#name').value.trim();
-    const email   = form.querySelector('#email').value.trim();
-    const subject = form.querySelector('#subject').value.trim();
-    const message = form.querySelector('#message').value.trim();
-
-    if (!name || !email || !subject || !message) {
-      alert('Please fill in all fields before sending.');
+    const result = validateForm();
+    if (!result.valid) {
+      setFormStatus('error', 'Please review the highlighted fields and try again.');
+      const firstInvalid = fields[result.invalid[0]];
+      if (firstInvalid) firstInvalid.focus();
       return;
     }
 
     // Disable button while sending
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
+    setFormStatus('', '');
 
     const templateParams = {
-      from_name:  name,
-      from_email: email,
-      subject:    subject,
-      message:    message,
+      from_name: fields.name.value.trim(),
+      from_email: fields.email.value.trim(),
+      subject: fields.subject.value.trim(),
+      message: fields.message.value.trim(),
     };
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
       .then(function () {
+        setFormStatus('success', 'Your message has been sent successfully. We will get back to you soon.');
+        statusTimer = setTimeout(() => setFormStatus('', ''), 5000);
+        form.reset();
+        Object.keys(fields).forEach((key) => setFieldError(fields[key], ''));
         submitBtn.textContent = 'Message Sent!';
         submitBtn.style.background = '#2a7a2a';
-        form.reset();
 
         // Reset button after 4 seconds
         setTimeout(function () {
@@ -426,7 +532,7 @@ updateHeader();
       })
       .catch(function (error) {
         console.error('EmailJS error:', error);
-        alert('Something went wrong. Please try again or email us directly at datalogix101@gmail.com');
+        setFormStatus('error', 'We could not send your message right now. Please try again or email us at datalogix101@gmail.com.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
       });
