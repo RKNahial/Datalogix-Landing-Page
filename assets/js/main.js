@@ -543,3 +543,101 @@ updateHeader();
       });
   });
 })();
+
+/* ---- Scroll Animations ---- */
+(function () {
+  const style = document.createElement('style');
+  style.textContent = `
+    .anim-ready {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(.4,0,.2,1),
+                  transform 0.65s cubic-bezier(.4,0,.2,1);
+    }
+    .anim-ready.anim-left {
+      transform: translateX(-36px);
+    }
+    .anim-ready.anim-right {
+      transform: translateX(36px);
+    }
+    .anim-ready.anim-scale {
+      transform: scale(0.94);
+    }
+    .anim-ready.anim-in {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Elements and their animation type
+  const targets = [
+    // Section headers
+    { sel: '.section-header',           cls: ''        },
+    { sel: '.about-header',             cls: ''        },
+    { sel: '.team-header',              cls: ''        },
+    { sel: '.clients-header',           cls: ''        },
+    { sel: '.gallery-header',           cls: ''        },
+
+    // About section
+    { sel: '.about-left',              cls: 'anim-left'  },
+    { sel: '.about-cards',             cls: 'anim-right' },
+    { sel: '.about-gv-left',           cls: 'anim-left'  },
+    { sel: '.about-gv-right',          cls: 'anim-right' },
+    { sel: '.about-values-text',       cls: ''           },
+    { sel: '.about-goal-text',         cls: ''           },
+
+    // Team cards
+    { sel: '.team-deck-wrap',          cls: ''        },
+    { sel: '.team-dots',               cls: ''        },
+
+    // Products
+    { sel: '.products-media',          cls: ''        },
+    { sel: '.products-tabs',           cls: ''        },
+    { sel: '.products-panel',          cls: ''        },
+
+    // Clients
+    { sel: '.client-card',             cls: 'anim-scale' },
+
+    // Partners
+    { sel: '.partners-marquee',        cls: ''        },
+
+    // Gallery
+    { sel: '.gallery-feature',         cls: 'anim-left'  },
+    { sel: '.gallery-thumbs-wrap',     cls: 'anim-right' },
+
+    // Contact
+    { sel: '.contact-info',            cls: 'anim-left'  },
+    { sel: '.contact-form-wrap',       cls: 'anim-right' },
+
+    // Footer
+    { sel: '.footer-column',           cls: ''        },
+  ];
+
+  // Apply base class to each element
+  targets.forEach(({ sel, cls }) => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.classList.add('anim-ready');
+      if (cls) el.classList.add(cls);
+
+      if (i > 0) {
+        el.style.transitionDelay = `${Math.min(i * 0.08, 0.4)}s`;
+      }
+    });
+  });
+
+  // Observe and trigger
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('anim-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.anim-ready').forEach(el => observer.observe(el));
+})();
