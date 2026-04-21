@@ -653,7 +653,6 @@ updateHeader();
   function runHero() {
     const atTop = window.scrollY < 10;
 
-    // Only animate the header if user is at the top
     if (atTop) {
       const headerEl = document.getElementById('header');
       headerEl.style.opacity    = '0';
