@@ -502,7 +502,6 @@ updateHeader();
       return;
     }
 
-    // Disable button while sending
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
     setFormStatus('', '');
@@ -528,7 +527,6 @@ updateHeader();
         submitBtn.textContent = 'Message Sent!';
         submitBtn.style.background = '#2a7a2a';
 
-        // Reset button after 4 seconds
         setTimeout(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
@@ -614,7 +612,6 @@ updateHeader();
     { sel: '.footer-column',           cls: ''        },
   ];
 
-  // Apply base class to each element
   targets.forEach(({ sel, cls }) => {
     document.querySelectorAll(sel).forEach((el, i) => {
       el.classList.add('anim-ready');
@@ -626,7 +623,6 @@ updateHeader();
     });
   });
 
-  // Observe and trigger
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -640,4 +636,55 @@ updateHeader();
   });
 
   document.querySelectorAll('.anim-ready').forEach(el => observer.observe(el));
+})();
+
+/* ---- Hero Entrance ---- */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let heroAnimDone = false;
+
+  const heroSteps = [
+    { el: document.getElementById('header'),        delay: 0   },
+    { el: document.querySelector('.hero-bg'),       delay: 0   },
+    { el: document.querySelector('.hero-text h1'),  delay: 150 },
+    { el: document.querySelector('.hero-text p'),   delay: 300 },
+    { el: document.querySelector('.hero-btns'),     delay: 440 },
+    { el: document.querySelector('.carousel-wrap'), delay: 580 },
+  ];
+
+  function runHero() {
+    heroSteps.forEach(({ el, delay }) => {
+      if (!el) return;
+      el.style.opacity    = '0';
+      el.style.transform  = 'translateY(24px)';
+      el.style.transition = 'none';
+
+      setTimeout(() => {
+        el.style.transition = `opacity 0.65s cubic-bezier(.4,0,.2,1),
+                               transform 0.65s cubic-bezier(.4,0,.2,1)`;
+        requestAnimationFrame(() => {
+          el.style.opacity   = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, delay);
+    });
+
+    setTimeout(() => {
+      heroAnimDone = true;
+    }, 580 + 650);
+  }
+
+  const originalUpdateHeader = window.updateHeader;
+  window.addEventListener('scroll', () => {
+    if (!heroAnimDone) {
+      document.getElementById('header').classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  if (document.readyState === 'complete') {
+    runHero();
+  } else {
+    window.addEventListener('load', runHero);
+  }
 })();
