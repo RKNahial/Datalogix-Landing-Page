@@ -1,6 +1,4 @@
-/* ============================================================
-       CSS VARIABLES 
-    ============================================================ */
+﻿/* root */
 :root {
   --blue: #001c38;
   --blue-mid: #003a66;
@@ -14,6 +12,12 @@
   --header-h: 70px;
 }
 
+/* html */
+html {
+  scroll-behavior: smooth;
+}
+
+/* body */
 *,
 *::before,
 *::after {
@@ -21,11 +25,6 @@
   margin: 0;
   padding: 0;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font);
   color: var(--text-dark);
@@ -46,9 +45,7 @@ ul {
   list-style: none;
 }
 
-/* ============================================================
-       HEADER
-    ============================================================ */
+/* HEADER */
 .header {
   position: fixed;
   top: 0;
@@ -196,9 +193,7 @@ ul {
   color: var(--red);
 }
 
-/* ============================================================
-       HERO 
-    ============================================================ */
+/* HERO */
 .hero {
   padding-top: var(--header-h);
   background: #fff;
@@ -314,9 +309,7 @@ ul {
   outline: none;
 }
 
-/* ============================================================
-       CAROUSEL
-    ============================================================ */
+/* CAROUSEL */
 .carousel-wrap {
   position: relative;
   z-index: 1;
@@ -453,11 +446,7 @@ ul {
   outline-offset: 3px;
 }
 
-/* ============================================================
-   ABOUT SECTION
-   ============================================================ */
-
-/* ── Shared container ── */
+/* ABOUT SECTION */
 .container-about {
   width: 100%;
   max-width: 1100px;
@@ -683,9 +672,7 @@ ul {
   line-height: 1.8;
 }
 
-/* ============================================================
-   MEET THE TEAM
-   ============================================================ */
+/* MEET THE TEAM */
 .team {
   position: relative;
   overflow: hidden;
@@ -967,26 +954,12 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   outline-offset: 3px;
 }
 
-/* ============================================================
-   PRODUCTS SECTION
-   ============================================================ */
+/* PRODUCTS SECTION */
 .products {
   position: relative;
   background: #fff;
   overflow: hidden;
   padding: 0 0 5rem;
-}
-
-@media (max-width: 560px) {
-  .products-card {
-    width: 90%;
-  }
-
-  .products-card-title-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-  }
 }
 
 .products::after {
@@ -1411,10 +1384,225 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   margin-top: 3.5rem;
   padding: 0;
 }
+.digital-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
 
-/* ============================================================
-   OUR CLIENTS SECTION
-   ============================================================ */
+.digital-card {
+  background: #F9F9F9;
+  border-radius: 17px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 28, 56, 0.08);
+  min-width: 0;
+  aspect-ratio: 373 / 480;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.digital-card:hover,
+.digital-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 28, 56, 0.1);
+  outline: none;
+}
+
+.digital-card-media {
+  position: relative;
+  aspect-ratio: 364 / 274;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+
+.digital-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.digital-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #A80000;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+}
+
+.digital-card-body {
+  position: relative;
+  flex: 1;
+  padding: 0.85rem 0.85rem 2rem;
+  overflow: hidden;
+}
+
+.digital-card-body h4 {
+  color: #001C38;
+  font-family: var(--font);
+  font-size: clamp(0.8rem, 1.1vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.95rem;
+  max-width: 100%;
+}
+
+.digital-card-mark {
+  position: absolute;
+  right: -1rem;
+  bottom: -0.8rem;
+  width: 110px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  color: rgba(168, 0, 0, 0.12);
+  font-size: 3.5rem;
+}
+
+.tech-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.tech-card {
+  background: #F9F9F9;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 28, 56, 0.08);
+  padding: 0 1.2rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-height: 178px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-card:hover,
+.tech-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 28, 56, 0.1);
+  outline: none;
+}
+
+.tech-icon {
+  width: 113px;
+  height: 113px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #A80000;
+  font-size: 3.28rem;
+  margin-top: -6px;
+}
+
+.tech-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #001C38;
+  margin: 0 0 0.8rem;
+}
+
+.tech-card p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 0.1rem;
+  line-height: 1.45;
+}
+
+.medical-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.medical-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 2.5rem;
+  justify-items: stretch;
+}
+
+.medical-item--reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.medical-media {
+  width: 100%;
+  max-width: 735px;
+  justify-self: stretch;
+}
+
+.medical-item--reverse .medical-media { order: 2; }
+.medical-item--reverse .medical-copy  { order: 1; }
+
+.medical-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 28px rgba(0, 28, 56, 0.1);
+  display: block;
+}
+
+.medical-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.medical-heading {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: #001C38;
+  margin: 0 0 0.15rem;
+  line-height: 1.25;
+}
+
+.medical-lead {
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+  color: #000;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.medical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.medical-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font);
+  font-size: clamp(0.75rem, 1.05vw, 0.875rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+.medical-list i {
+  color: #A80000;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* OUR CLIENTS SECTION */
 .clients {
   background: #F9F9F9;
   padding: 0 0 5rem;
@@ -1541,6 +1729,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   margin: -0.45rem 0 0;
 }
 
+
+/* OUR PARTNERS SECTION */
 .partners {
   background: #fff;
   padding: 0 0 5rem;
@@ -1622,9 +1812,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 }
 
-/* ============================================================
-   GALLERY SECTION
-   ============================================================ */
+
+/* GALLERY */
 .gallery {
   background: #F9F9F9;
   padding: 0 0 5rem;
@@ -1895,225 +2084,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   to   { transform: translateX(0);     opacity: 1;    }
 }
 
-.digital-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
-}
 
-.digital-card {
-  background: #F9F9F9;
-  border-radius: 17px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 28, 56, 0.08);
-  min-width: 0;
-  aspect-ratio: 373 / 480;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.digital-card:hover,
-.digital-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 28, 56, 0.1);
-  outline: none;
-}
-
-.digital-card-media {
-  position: relative;
-  aspect-ratio: 364 / 274;
-  border-radius: 18px 18px 0 0;
-  overflow: hidden;
-}
-
-.digital-card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.digital-card-badge {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #A80000;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 1.3rem;
-}
-
-.digital-card-body {
-  position: relative;
-  flex: 1;
-  padding: 0.85rem 0.85rem 2rem;
-  overflow: hidden;
-}
-
-.digital-card-body h4 {
-  color: #001C38;
-  font-family: var(--font);
-  font-size: clamp(0.8rem, 1.1vw, 1.05rem);
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 0 0 0.95rem;
-  max-width: 100%;
-}
-
-.digital-card-mark {
-  position: absolute;
-  right: -1rem;
-  bottom: -0.8rem;
-  width: 110px;
-  height: 110px;
-  display: grid;
-  place-items: center;
-  color: rgba(168, 0, 0, 0.12);
-  font-size: 3.5rem;
-}
-
-.tech-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-.tech-card {
-  background: #F9F9F9;
-  border-radius: 12px;
-  box-shadow: 0 10px 28px rgba(0, 28, 56, 0.08);
-  padding: 0 1.2rem 1.35rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  min-height: 178px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.tech-card:hover,
-.tech-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 28, 56, 0.1);
-  outline: none;
-}
-
-.tech-icon {
-  width: 113px;
-  height: 113px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #A80000;
-  font-size: 3.28rem;
-  margin-top: -6px;
-}
-
-.tech-card h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #001C38;
-  margin: 0 0 0.8rem;
-}
-
-.tech-card p {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #000;
-  margin: 0 0 0.1rem;
-  line-height: 1.45;
-}
-
-.medical-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-.medical-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-  gap: 2.5rem;
-  justify-items: stretch;
-}
-
-.medical-item--reverse {
-  grid-template-columns: 1fr 1fr;
-}
-
-.medical-media {
-  width: 100%;
-  max-width: 735px;
-  justify-self: stretch;
-}
-
-.medical-item--reverse .medical-media { order: 2; }
-.medical-item--reverse .medical-copy  { order: 1; }
-
-.medical-media img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 6px 28px rgba(0, 28, 56, 0.1);
-  display: block;
-}
-
-.medical-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.medical-heading {
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  font-weight: 700;
-  color: #001C38;
-  margin: 0 0 0.15rem;
-  line-height: 1.25;
-}
-
-.medical-lead {
-  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
-  color: #000;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.medical-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.medical-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-family: var(--font);
-  font-size: clamp(0.75rem, 1.05vw, 0.875rem);
-  font-weight: 400;
-  color: #000;
-  line-height: 1.5;
-}
-
-.medical-list i {
-  color: #A80000;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-}
-
-/* ── Contact Us ── */
+/* CONTACT US SECTION */
 .contact {
   position: relative;
   overflow: hidden;
@@ -2363,6 +2335,242 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   transform: translateY(0);
 }
 
+
+/* FOOTER */
+.footer {
+  background: #fff;
+  padding: clamp(2rem, 6vw, 3.5rem) 0 2rem;
+  margin-top: 0.25rem;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-about {
+  grid-column: 1 / 2;
+}
+
+.footer-logo {
+  margin-bottom: 2rem;
+  display: inline-block;
+  max-width: 200px;
+}
+
+.footer-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.footer-column-title {
+  font-size: clamp(0.84rem, 1.3vw, 0.98rem);
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.footer-column-text {
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav a {
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  color: var(--text-muted);
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--red);
+  outline: none;
+}
+
+.footer-contact-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.footer-contact-item i {
+  font-size: 1.1rem;
+  color: var(--red);
+  min-width: 20px;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.footer-contact-text {
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-contact-text a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.footer-contact-text a:hover,
+.footer-contact-text a:focus-visible {
+  color: var(--red);
+  text-decoration: none;
+  outline: none;
+}
+
+.address-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.address-link:hover,
+.address-link:focus-visible {
+  color: var(--red);
+  text-decoration: none;
+  outline: none;
+}
+
+.footer-contact-text-item {
+  color: var(--text-muted);
+  transition: color 0.25s ease;
+}
+
+.footer-contact-item:hover .footer-contact-text-item,
+.footer-contact-item:focus-within .footer-contact-text-item {
+  color: var(--red);
+}
+
+.footer-contact-item:hover .footer-contact-text a,
+.footer-contact-item:focus-within .footer-contact-text a {
+  color: var(--red);
+}
+
+.footer-contact-text a:focus-visible {
+  outline: none;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  border: none;
+  margin: clamp(0.6rem, 1.5vw, 1rem) 0;
+}
+
+.footer-copyright {
+  text-align: left;
+}
+
+.footer-copyright p {
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  color: #55556F;
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+
+/* ============================================================
+   BACK TO TOP BUTTON
+   ============================================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top:hover {
+  background: var(--red-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 1024px) {
+  .carousel {
+    aspect-ratio: 16 / 7;
+  }
+  .products-tabs {
+    gap: 0.7rem;
+  }
+  .products-arrow--prev {
+    left: -1.5%;
+  }
+  .products-arrow--next {
+    right: -1.5%;
+  }
+
+  .clients-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partners-track {
+    animation-duration: 24s;
+  }
+
+  .gallery-showcase {
+    max-width: 880px;
+  }
+}
 @media (max-width: 768px) {
   .contact {
     padding: clamp(3.25rem, 6vh, 4.25rem) 1.25rem clamp(4.4rem, 8vh, 5.7rem);
@@ -2439,7 +2647,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     gap: 1.5rem;
   }
 }
-
 @media (max-width: 768px) {
   .medical-item,
   .medical-item--reverse {
@@ -2452,111 +2659,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   .medical-item--reverse .medical-media { order: 1; }
   .medical-item--reverse .medical-copy  { order: 2; }
 }
-
-@media (max-width: 480px) {
-  .contact {
-    padding: 2.75rem 1rem 3.6rem;
-  }
-
-  .products-medical {
-    margin-top: 1.5rem;
-  }
-
-  .medical-wrapper {
-    gap: 2.25rem;
-  }
-
-  .products-tech {
-    margin-top: 1.5rem;
-  }
-
-  .products-digital {
-    margin-top: 2rem;
-  }
-
-  .digital-wrapper {
-    grid-template-columns: 1fr;
-    gap: 0.95rem;
-    max-width: 100%;
-  }
-
-  .digital-card {
-    aspect-ratio: 373 / 390;
-  }
-
-  .digital-card-body {
-    padding: 0.9rem 0.95rem 1.35rem;
-  }
-
-  .digital-card-body h4 {
-    font-size: clamp(1rem, 4.8vw, 1.16rem);
-  }
-
-  .digital-card-badge {
-    top: 0.65rem;
-    right: 0.65rem;
-    width: 48px;
-    height: 48px;
-    font-size: 1.3rem;
-  }
-
-  .digital-card-mark {
-    right: -0.65rem;
-    bottom: -0.35rem;
-    width: 108px;
-    height: 108px;
-    font-size: 3.2rem;
-  }
-
-  .contact-card {
-    border-radius: 16px;
-  }
-
-  .contact-info {
-    border-radius: 16px 16px 0 0;
-    padding: 2rem 1.25rem;
-  }
-
-  .contact-form-wrap {
-    padding: 2rem 1.25rem;
-  }
-
-  .contact-info-icon {
-    width: 52px;
-    height: 52px;
-  }
-}
-
-/* ============================================================
-   RESPONSIVE LAYOUT
-   ============================================================ */
-@media (max-width: 1024px) {
-  .carousel {
-    aspect-ratio: 16 / 7;
-  }
-  .products-tabs {
-    gap: 0.7rem;
-  }
-  .products-arrow--prev {
-    left: -1.5%;
-  }
-  .products-arrow--next {
-    right: -1.5%;
-  }
-
-  .clients-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .partners-track {
-    animation-duration: 24s;
-  }
-
-  .gallery-showcase {
-    max-width: 880px;
-  }
-}
-
 @media (max-width: 768px) {
   /* Nav */
   .nav-desktop {
@@ -2819,218 +2921,6 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
     }
   }
 }
-
-
-/* ============================================================
-   FOOTER SECTION
-   ============================================================ */
-.footer {
-  background: #fff;
-  padding: clamp(2rem, 6vw, 3.5rem) 0 2rem;
-  margin-top: 0.25rem;
-}
-
-.footer-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
-}
-
-.footer-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-about {
-  grid-column: 1 / 2;
-}
-
-.footer-logo {
-  margin-bottom: 2rem;
-  display: inline-block;
-  max-width: 200px;
-}
-
-.footer-logo img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.footer-column-title {
-  font-size: clamp(0.84rem, 1.3vw, 0.98rem);
-  font-weight: 700;
-  color: var(--blue);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.footer-column-text {
-  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.footer-nav ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.footer-nav a {
-  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
-  color: var(--text-muted);
-  transition: color 0.25s ease;
-  text-decoration: none;
-}
-
-.footer-nav a:hover,
-.footer-nav a:focus-visible {
-  color: var(--red);
-  outline: none;
-}
-
-.footer-contact-item {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.footer-contact-item i {
-  font-size: 1.1rem;
-  color: var(--red);
-  min-width: 20px;
-  margin-top: 0.15rem;
-  flex-shrink: 0;
-}
-
-.footer-contact-text {
-  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.footer-contact-text a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.25s ease;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.footer-contact-text a:hover,
-.footer-contact-text a:focus-visible {
-  color: var(--red);
-  text-decoration: none;
-  outline: none;
-}
-
-.address-link {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-.address-link:hover,
-.address-link:focus-visible {
-  color: var(--red);
-  text-decoration: none;
-  outline: none;
-}
-
-.footer-contact-text-item {
-  color: var(--text-muted);
-  transition: color 0.25s ease;
-}
-
-.footer-contact-item:hover .footer-contact-text-item,
-.footer-contact-item:focus-within .footer-contact-text-item {
-  color: var(--red);
-}
-
-.footer-contact-item:hover .footer-contact-text a,
-.footer-contact-item:focus-within .footer-contact-text a {
-  color: var(--red);
-}
-
-.footer-contact-text a:focus-visible {
-  outline: none;
-}
-
-.footer-divider {
-  width: 100%;
-  height: 1px;
-  background: #e5e5e5;
-  border: none;
-  margin: clamp(0.6rem, 1.5vw, 1rem) 0;
-}
-
-.footer-copyright {
-  text-align: left;
-}
-
-.footer-copyright p {
-  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
-  color: #55556F;
-  margin: 0;
-  line-height: 1.5;
-}
-
-
-
-/* ============================================================
-   BACK TO TOP BUTTON
-   ============================================================ */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
-  background: var(--red);
-  border: none;
-  border-radius: 50%;
-  color: var(--white);
-  font-size: 1.25rem;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.back-to-top:hover {
-  background: var(--red-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.back-to-top:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ── Responsive: Tablet (768px) ── */
 @media (max-width: 768px) {
 
     .footer {
@@ -3064,6 +2954,90 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   }
 }
 
+@media (max-width: 560px) {
+  .products-card {
+    width: 90%;
+  }
+
+  .products-card-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+@media (max-width: 480px) {
+  .contact {
+    padding: 2.75rem 1rem 3.6rem;
+  }
+
+  .products-medical {
+    margin-top: 1.5rem;
+  }
+
+  .medical-wrapper {
+    gap: 2.25rem;
+  }
+
+  .products-tech {
+    margin-top: 1.5rem;
+  }
+
+  .products-digital {
+    margin-top: 2rem;
+  }
+
+  .digital-wrapper {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+    max-width: 100%;
+  }
+
+  .digital-card {
+    aspect-ratio: 373 / 390;
+  }
+
+  .digital-card-body {
+    padding: 0.9rem 0.95rem 1.35rem;
+  }
+
+  .digital-card-body h4 {
+    font-size: clamp(1rem, 4.8vw, 1.16rem);
+  }
+
+  .digital-card-badge {
+    top: 0.65rem;
+    right: 0.65rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+
+  .digital-card-mark {
+    right: -0.65rem;
+    bottom: -0.35rem;
+    width: 108px;
+    height: 108px;
+    font-size: 3.2rem;
+  }
+
+  .contact-card {
+    border-radius: 16px;
+  }
+
+  .contact-info {
+    border-radius: 16px 16px 0 0;
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-form-wrap {
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-info-icon {
+    width: 52px;
+    height: 52px;
+  }
+}
 @media (max-width: 480px) {
   .clients {
     padding-bottom: 3.5rem;
