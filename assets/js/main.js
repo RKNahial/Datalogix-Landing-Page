@@ -174,6 +174,12 @@ updateHeader();
       const active = i === index;
       tab.classList.toggle('is-active', active);
       tab.setAttribute('aria-selected', String(active));
+      const tabImage = tab.querySelector('.products-tab-media img');
+      if (tabImage) {
+        tabImage.src = active
+          ? (tabImage.dataset.activeSrc || tabImage.src)
+          : (tabImage.dataset.inactiveSrc || tabImage.src);
+      }
     });
 
     const tab = tabs[index];
@@ -206,6 +212,19 @@ updateHeader();
       const next = (index + dir + tabs.length) % tabs.length;
       tabs[next].focus();
       activate(next, { scroll: true });
+    });
+    tab.addEventListener('mouseenter', () => {
+      const tabImage = tab.querySelector('.products-tab-media img');
+      if (!tabImage) return;
+      tabImage.src = tabImage.dataset.activeSrc || tabImage.src;
+    });
+    tab.addEventListener('mouseleave', () => {
+      const tabImage = tab.querySelector('.products-tab-media img');
+      if (!tabImage) return;
+      const isActive = tab.classList.contains('is-active');
+      tabImage.src = isActive
+        ? (tabImage.dataset.activeSrc || tabImage.src)
+        : (tabImage.dataset.inactiveSrc || tabImage.src);
     });
   });
 
