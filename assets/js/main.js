@@ -159,7 +159,17 @@ updateHeader();
     return `${words.join(' ')} <span class="red">${last}</span>`;
   }
 
-  function activate(index) {
+  function scrollToProductsPanel() {
+    const header = document.getElementById('header');
+    const headerOffset = header ? header.getBoundingClientRect().height : 0;
+    const targetY = panel.getBoundingClientRect().top + window.scrollY - headerOffset - 12;
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    window.scrollTo({ top: Math.max(targetY, 0), behavior });
+  }
+
+  function activate(index, options = {}) {
+    const { scroll = false } = options;
+
     tabs.forEach((tab, i) => {
       const active = i === index;
       tab.classList.toggle('is-active', active);
@@ -181,17 +191,21 @@ updateHeader();
         content.setAttribute('hidden', '');
       }
     });
+
+    if (scroll) {
+      requestAnimationFrame(scrollToProductsPanel);
+    }
   }
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => activate(index));
+    tab.addEventListener('click', () => activate(index, { scroll: true }));
     tab.addEventListener('keydown', (event) => {
       if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
       event.preventDefault();
       const dir = event.key === 'ArrowRight' ? 1 : -1;
       const next = (index + dir + tabs.length) % tabs.length;
       tabs[next].focus();
-      activate(next);
+      activate(next, { scroll: true });
     });
   });
 
