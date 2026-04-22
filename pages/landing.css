@@ -3398,6 +3398,8 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   .back-to-top {
     bottom: 1rem;
     right: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    right: max(1rem, env(safe-area-inset-right));
     width: 40px;
     height: 40px;
     font-size: 1rem;
