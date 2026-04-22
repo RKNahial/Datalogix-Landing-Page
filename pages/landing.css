@@ -1103,6 +1103,11 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   overflow-wrap: anywhere;
 }
 
+.products-tab-label--digital {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 /* Arrow circle — bottom-right corner, moderate size */
 .products-tab-arrow {
   position: absolute;
