@@ -498,10 +498,23 @@ updateHeader();
   Object.keys(fields).forEach((key) => {
     const input = fields[key];
     ensureErrorElement(input);
-    input.addEventListener('blur', () => validateField(key));
+    input.addEventListener('blur', () => {
+      // Don't keep warnings for fields that were only focused then left empty.
+      if (!input.value.trim()) {
+        setFieldError(input, '');
+        return;
+      }
+      validateField(key);
+    });
     input.addEventListener('input', () => {
       setFormStatus('', '');
-      if (input.classList.contains('is-invalid')) validateField(key);
+      if (!input.classList.contains('is-invalid')) return;
+      // Clear stale required warnings while user leaves the field empty.
+      if (!input.value.trim()) {
+        setFieldError(input, '');
+        return;
+      }
+      validateField(key);
     });
   });
 
