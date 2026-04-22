@@ -2646,6 +2646,15 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   .contact-info-items {
     gap: 1.5rem;
   }
+
+  .gallery-thumb.is-active {
+    transform: scale(1.06);
+  }
+
+  .gallery-thumb.is-active:hover,
+  .gallery-thumb.is-active:focus-visible {
+    transform: scale(1.08) translateY(-2px);
+  }
 }
 @media (max-width: 768px) {
   .medical-item,
@@ -3036,6 +3045,15 @@ font-size: clamp(0.75rem, 1.35vw, 1rem);
   .contact-info-icon {
     width: 52px;
     height: 52px;
+  }
+
+  .gallery-thumb.is-active {
+    transform: scale(1.04);
+  }
+
+  .gallery-thumb.is-active:hover,
+  .gallery-thumb.is-active:focus-visible {
+    transform: scale(1.06) translateY(-2px);
   }
 }
 @media (max-width: 480px) {
