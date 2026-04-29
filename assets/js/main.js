@@ -641,7 +641,7 @@ updateHeader();
     { sel: '.products-panel',          cls: ''        },
 
     // Clients
-    { sel: '.client-card',             cls: 'anim-scale' },
+    { sel: '.clients-grid',            cls: ''        },
 
     // Partners
     { sel: '.partners-marquee',        cls: ''        },
